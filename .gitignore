@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+*.egg
+dist/
+build/
+
+# Environment
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node / React Native
+node_modules/
+mobile/node_modules/
+.expo/
+mobile/.expo/
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Alembic
+backend/alembic/versions/*.pyc
+
+# Misc
+*.log
+*.sqlite3
