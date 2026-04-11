@@ -11,7 +11,7 @@ interface Props {
 const VERDICTS: { key: Verdict; emoji: string; label: string }[] = [
   { key: 'go_back', emoji: '👍', label: "I'd go back" },
   { key: 'iffy', emoji: '🤷', label: "I'm iffy" },
-  { key: 'would_not', emoji: '👎', label: "I wouldn't go back" },
+  { key: 'would_not_go_back', emoji: '👎', label: "I wouldn't go back" },
 ];
 
 export default function VerdictButtons({ selected, onSelect }: Props) {

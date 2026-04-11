@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, ScrollView, TouchableOpacity, Switch, StyleSheet } from 'react-native';
+import { View, Text, ScrollView, TouchableOpacity, Switch, ActivityIndicator, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
-import { mockUser } from '../../lib/mockData';
+import { useAuth } from '../../lib/auth';
+import { useUserWantToGo, useUserVisited, useUserLists, useUserSaved } from '../../lib/hooks';
 
 type SubTab = 'want_to_go' | 'visited' | 'lists' | 'saved';
 type SubFilter = 'all' | 'restaurant' | 'hotel';
@@ -14,9 +15,40 @@ const SUB_TABS: { key: SubTab; label: string }[] = [
 ];
 
 export default function ProfileScreen() {
+  const { user, isLoggedIn, logout } = useAuth();
+  const { data: wantToGoData, isLoading: wtgLoading } = useUserWantToGo();
+  const { data: visitedData, isLoading: visLoading } = useUserVisited();
+  const { data: listsData, isLoading: lstLoading } = useUserLists();
+  const { data: savedData, isLoading: svdLoading } = useUserSaved();
+
   const [subTab, setSubTab] = useState<SubTab>('want_to_go');
   const [subFilter, setSubFilter] = useState<SubFilter>('all');
   const [reviewPrivacy, setReviewPrivacy] = useState(false);
+
+  if (!isLoggedIn || !user) {
+    return (
+      <View style={[styles.container, { alignItems: 'center', justifyContent: 'center', flex: 1 }]}>
+        <Ionicons name="person-circle-outline" size={64} color="#D1D5DB" />
+        <Text style={{ fontSize: 18, fontWeight: '600', color: '#1A1A2E', marginTop: 16 }}>
+          Sign in to view your profile
+        </Text>
+        <Text style={{ fontSize: 14, color: '#9CA3AF', marginTop: 4 }}>
+          Track your reviews, lists, and saved venues
+        </Text>
+      </View>
+    );
+  }
+
+  const subTabData = (): { count: number; loading: boolean } => {
+    switch (subTab) {
+      case 'want_to_go': return { count: wantToGoData?.length ?? 0, loading: wtgLoading };
+      case 'visited': return { count: visitedData?.length ?? 0, loading: visLoading };
+      case 'lists': return { count: listsData?.length ?? 0, loading: lstLoading };
+      case 'saved': return { count: savedData?.length ?? 0, loading: svdLoading };
+    }
+  };
+
+  const { count: tabCount, loading: tabLoading } = subTabData();
 
   return (
     <ScrollView style={styles.container} contentContainerStyle={{ paddingBottom: 40 }}>
@@ -26,11 +58,11 @@ export default function ProfileScreen() {
           <Ionicons name="person" size={32} color="#FFFFFF" />
         </View>
         <View style={styles.headerInfo}>
-          <Text style={styles.name}>{mockUser.name}</Text>
-          <Text style={styles.stats}>{mockUser.reviewCount} reviews · {mockUser.listsCount} lists</Text>
+          <Text style={styles.name}>{user.display_name}</Text>
+          <Text style={styles.stats}>{user.email}</Text>
         </View>
-        <TouchableOpacity style={styles.settingsBtn}>
-          <Ionicons name="settings-outline" size={22} color="#6B7280" />
+        <TouchableOpacity style={styles.settingsBtn} onPress={logout}>
+          <Ionicons name="log-out-outline" size={22} color="#6B7280" />
         </TouchableOpacity>
       </View>
 
@@ -64,21 +96,36 @@ export default function ProfileScreen() {
         ))}
       </View>
 
-      {/* Placeholder content */}
+      {/* Tab content */}
       <View style={styles.placeholder}>
-        <Ionicons
-          name={subTab === 'want_to_go' ? 'heart-outline' : subTab === 'visited' ? 'checkmark-circle-outline' : subTab === 'lists' ? 'list-outline' : 'bookmark-outline'}
-          size={40}
-          color="#D1D5DB"
-        />
-        <Text style={styles.placeholderTitle}>
-          {subTab === 'want_to_go' ? 'Your Want to Go list' :
-           subTab === 'visited' ? 'Places you\'ve been' :
-           subTab === 'lists' ? 'Your custom lists' : 'Saved venues'}
-        </Text>
-        <Text style={styles.placeholderSub}>
-          Start exploring to add venues here
-        </Text>
+        {tabLoading ? (
+          <ActivityIndicator size="large" color="#1A6B5A" />
+        ) : tabCount > 0 ? (
+          <>
+            <Ionicons
+              name={subTab === 'want_to_go' ? 'heart' : subTab === 'visited' ? 'checkmark-circle' : subTab === 'lists' ? 'list' : 'bookmark'}
+              size={40}
+              color="#1A6B5A"
+            />
+            <Text style={styles.placeholderTitle}>{tabCount} items</Text>
+          </>
+        ) : (
+          <>
+            <Ionicons
+              name={subTab === 'want_to_go' ? 'heart-outline' : subTab === 'visited' ? 'checkmark-circle-outline' : subTab === 'lists' ? 'list-outline' : 'bookmark-outline'}
+              size={40}
+              color="#D1D5DB"
+            />
+            <Text style={styles.placeholderTitle}>
+              {subTab === 'want_to_go' ? 'Your Want to Go list' :
+               subTab === 'visited' ? 'Places you\'ve been' :
+               subTab === 'lists' ? 'Your custom lists' : 'Saved venues'}
+            </Text>
+            <Text style={styles.placeholderSub}>
+              Start exploring to add venues here
+            </Text>
+          </>
+        )}
       </View>
 
       {/* Settings section */}

@@ -1,17 +1,17 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useRouter } from 'expo-router';
-import { Venue } from '../lib/types';
+import { VenueOut } from '../lib/types';
 import ScoreBadge from './ScoreBadge';
 
 interface Props {
-  venue: Venue;
+  venue: VenueOut;
 }
 
 export default function VenueCard({ venue }: Props) {
   const router = useRouter();
-  const tags = venue.cuisineTags || venue.amenityTags || [];
-  const priceDots = '●'.repeat(venue.priceLevel) + '○'.repeat(4 - venue.priceLevel);
+  const tags = venue.cuisine_tags || venue.tags || [];
+  const priceDots = '●'.repeat(venue.price_level ?? 0) + '○'.repeat(4 - (venue.price_level ?? 0));
 
   return (
     <TouchableOpacity
@@ -26,7 +26,7 @@ export default function VenueCard({ venue }: Props) {
           )}
           <Text style={styles.name} numberOfLines={1}>{venue.name}</Text>
           <Text style={styles.meta}>
-            {venue.neighborhood || venue.city} · {priceDots}
+            {venue.city} · {priceDots}
           </Text>
           <View style={styles.tags}>
             {tags.slice(0, 3).map((tag) => (
@@ -36,7 +36,7 @@ export default function VenueCard({ venue }: Props) {
             ))}
           </View>
         </View>
-        <ScoreBadge score={venue.compositeScore} />
+        <ScoreBadge score={venue.composite_score ?? 0} />
       </View>
     </TouchableOpacity>
   );

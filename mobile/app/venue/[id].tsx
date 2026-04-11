@@ -1,24 +1,29 @@
 import React, { useState } from 'react';
 import {
   View, Text, ScrollView, TouchableOpacity, TextInput,
-  FlatList, StyleSheet, Dimensions,
+  ActivityIndicator, StyleSheet, Dimensions, Linking,
 } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
-import { allMockVenues } from '../../lib/mockData';
-import { mockCommunityStats } from '../../lib/mockData';
 import { Verdict } from '../../lib/types';
+import { useVenue, useVenueSummary, useVenueReviews, useVenueReservations, useSubmitReview, useToggleSaved, useToggleWantToGo } from '../../lib/hooks';
+import { useAuth } from '../../lib/auth';
 import ScoreBadge from '../../components/ScoreBadge';
-import SourceCard from '../../components/SourceCard';
 import VerdictButtons from '../../components/VerdictButtons';
 
 const { width: SCREEN_WIDTH } = Dimensions.get('window');
 
 export default function VenueDetailScreen() {
   const { id } = useLocalSearchParams<{ id: string }>();
-  const venue = allMockVenues.find((v) => v.id === id);
-  const community = id ? mockCommunityStats[id] : undefined;
+  const { data: venue, isLoading, error, refetch } = useVenue(id!);
+  const { data: summary } = useVenueSummary(id!);
+  const { data: reviews } = useVenueReviews(id!);
+  const { data: reservations } = useVenueReservations(id!);
+
+  const submitReview = useSubmitReview(id!);
+  const toggleSaved = useToggleSaved();
+  const toggleWantToGo = useToggleWantToGo();
 
   const [verdict, setVerdict] = useState<Verdict | undefined>();
   const [comment, setComment] = useState('');
@@ -26,24 +31,57 @@ export default function VenueDetailScreen() {
   const [bookmarked, setBookmarked] = useState(false);
   const [wantToGo, setWantToGo] = useState(false);
 
-  if (!venue) {
+  if (isLoading) {
     return (
       <View style={styles.center}>
-        <Text style={styles.errorText}>Venue not found</Text>
+        <ActivityIndicator size="large" color="#1A6B5A" />
       </View>
     );
   }
 
-  const tags = venue.cuisineTags || venue.amenityTags || [];
-  const priceDots = '●'.repeat(venue.priceLevel) + '○'.repeat(4 - venue.priceLevel);
-  const isRestaurant = venue.type === 'restaurant';
-  const totalVotes = community
-    ? community.goBackCount + community.iffyCount + community.wouldNotCount
-    : 0;
+  if (error || !venue) {
+    return (
+      <View style={styles.center}>
+        <Text style={styles.errorText}>{error ? 'Failed to load venue' : 'Venue not found'}</Text>
+        <TouchableOpacity onPress={() => refetch()} style={{ marginTop: 12 }}>
+          <Text style={{ color: '#1A6B5A', fontWeight: '600' }}>Retry</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  const tags = venue.cuisine_tags || venue.tags || [];
+  const priceDots = '●'.repeat(venue.price_level ?? 0) + '○'.repeat(4 - (venue.price_level ?? 0));
+  const isRestaurant = venue.entity_type === 'restaurant';
+  const sentiment = summary?.sentiment_breakdown;
+  const goBackCount = sentiment?.go_back ?? 0;
+  const iffyCount = sentiment?.iffy ?? 0;
+  const wouldNotCount = sentiment?.would_not_go_back ?? 0;
 
   const handleVerdict = (v: Verdict) => {
     setVerdict(v);
     setShowComment(true);
+  };
+
+  const handleSubmitReview = () => {
+    if (!verdict) return;
+    submitReview.mutate({ verdict, comment: comment || undefined });
+  };
+
+  const handleBookmark = () => {
+    toggleSaved.mutate({ venueId: id!, action: bookmarked ? 'remove' : 'add' });
+    setBookmarked(!bookmarked);
+  };
+
+  const handleWantToGo = () => {
+    toggleWantToGo.mutate({ venueId: id!, action: wantToGo ? 'remove' : 'add' });
+    setWantToGo(!wantToGo);
+  };
+
+  const handleCta = () => {
+    if (reservations?.length) {
+      Linking.openURL(reservations[0].booking_url);
+    }
   };
 
   const pickImage = async () => {
@@ -62,7 +100,7 @@ export default function VenueDetailScreen() {
         {/* Bookmark */}
         <TouchableOpacity
           style={styles.bookmarkBtn}
-          onPress={() => setBookmarked(!bookmarked)}
+          onPress={handleBookmark}
         >
           <Ionicons
             name={bookmarked ? 'bookmark' : 'bookmark-outline'}
@@ -78,7 +116,7 @@ export default function VenueDetailScreen() {
           <View style={{ flex: 1 }}>
             <Text style={styles.name}>{venue.name}</Text>
             <Text style={styles.meta}>
-              {venue.neighborhood || venue.city} · {priceDots}
+              {venue.city} · {priceDots}
             </Text>
             <View style={styles.tags}>
               {tags.map((tag) => (
@@ -89,29 +127,16 @@ export default function VenueDetailScreen() {
             </View>
           </View>
           <View style={styles.scoreCol}>
-            <ScoreBadge score={venue.compositeScore} size="large" />
+            <ScoreBadge score={venue.composite_score ?? 0} size="large" />
             {venue.rank && <Text style={styles.rankLabel}>#{venue.rank} in {venue.city}</Text>}
           </View>
         </View>
 
         {/* CTA Button */}
-        <TouchableOpacity style={styles.ctaButton} activeOpacity={0.8}>
+        <TouchableOpacity style={styles.ctaButton} activeOpacity={0.8} onPress={handleCta}>
           <Ionicons name={isRestaurant ? 'restaurant-outline' : 'bed-outline'} size={18} color="#FFFFFF" />
           <Text style={styles.ctaText}>{isRestaurant ? 'Reserve' : 'Book'}</Text>
         </TouchableOpacity>
-      </View>
-
-      {/* Source cards */}
-      <View style={styles.section}>
-        <Text style={styles.sectionTitle}>Ratings</Text>
-        <FlatList
-          horizontal
-          data={venue.sourceRatings}
-          keyExtractor={(item) => item.source}
-          renderItem={({ item }) => <SourceCard source={item} />}
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 16 }}
-        />
       </View>
 
       {/* Review section */}
@@ -130,10 +155,18 @@ export default function VenueDetailScreen() {
                 multiline
                 numberOfLines={3}
               />
-              <TouchableOpacity style={styles.photoBtn} onPress={pickImage}>
-                <Ionicons name="camera-outline" size={18} color="#1A6B5A" />
-                <Text style={styles.photoBtnText}>Add Photo</Text>
-              </TouchableOpacity>
+              <View style={{ flexDirection: 'row', gap: 10, marginTop: 10 }}>
+                <TouchableOpacity style={styles.photoBtn} onPress={pickImage}>
+                  <Ionicons name="camera-outline" size={18} color="#1A6B5A" />
+                  <Text style={styles.photoBtnText}>Add Photo</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={[styles.photoBtn, { backgroundColor: '#1A6B5A' }]}
+                  onPress={handleSubmitReview}
+                >
+                  <Text style={[styles.photoBtnText, { color: '#FFFFFF' }]}>Submit</Text>
+                </TouchableOpacity>
+              </View>
             </View>
           )}
         </View>
@@ -143,44 +176,42 @@ export default function VenueDetailScreen() {
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Community</Text>
         <View style={styles.sectionContent}>
-          {community ? (
+          {summary ? (
             <>
               {/* Verdict breakdown bar */}
-              <View style={styles.breakdownBar}>
-                <View style={[styles.barSegment, { flex: community.goBackCount, backgroundColor: '#1A6B5A' }]} />
-                <View style={[styles.barSegment, { flex: community.iffyCount, backgroundColor: '#D4A843' }]} />
-                <View style={[styles.barSegment, { flex: community.wouldNotCount, backgroundColor: '#DC2626' }]} />
-              </View>
-              <View style={styles.breakdownLabels}>
-                <Text style={styles.breakdownLabel}>👍 {community.goBackCount}</Text>
-                <Text style={styles.breakdownLabel}>🤷 {community.iffyCount}</Text>
-                <Text style={styles.breakdownLabel}>👎 {community.wouldNotCount}</Text>
-              </View>
+              {sentiment && (goBackCount + iffyCount + wouldNotCount > 0) && (
+                <>
+                  <View style={styles.breakdownBar}>
+                    <View style={[styles.barSegment, { flex: goBackCount, backgroundColor: '#1A6B5A' }]} />
+                    <View style={[styles.barSegment, { flex: iffyCount, backgroundColor: '#D4A843' }]} />
+                    <View style={[styles.barSegment, { flex: wouldNotCount, backgroundColor: '#DC2626' }]} />
+                  </View>
+                  <View style={styles.breakdownLabels}>
+                    <Text style={styles.breakdownLabel}>👍 {goBackCount}</Text>
+                    <Text style={styles.breakdownLabel}>🤷 {iffyCount}</Text>
+                    <Text style={styles.breakdownLabel}>👎 {wouldNotCount}</Text>
+                  </View>
+                </>
+              )}
+
+              {/* Review & photo counts */}
+              <Text style={{ fontSize: 13, color: '#6B7280', marginTop: 10 }}>
+                {summary.review_count} reviews · {summary.photo_count} photos
+              </Text>
 
               {/* AI Summary */}
-              {community.aiSummary && (
+              {summary.ai_summary && (
                 <View style={styles.aiSummary}>
                   <Ionicons name="sparkles" size={14} color="#1A6B5A" />
-                  <Text style={styles.aiSummaryText}>{community.aiSummary}</Text>
+                  <Text style={styles.aiSummaryText}>{summary.ai_summary}</Text>
                 </View>
               )}
 
-              {/* Top dishes / highlights */}
-              {community.topDishes && community.topDishes.length > 0 && (
+              {/* Highlights */}
+              {summary.highlights && summary.highlights.length > 0 && (
                 <View style={styles.highlights}>
-                  <Text style={styles.highlightsTitle}>
-                    {isRestaurant ? 'Top Dishes' : 'Highlights'}
-                  </Text>
-                  {community.topDishes.map((d) => (
-                    <Text key={d} style={styles.highlightItem}>• {d}</Text>
-                  ))}
-                </View>
-              )}
-
-              {community.highlights && community.highlights.length > 0 && (
-                <View style={styles.highlights}>
-                  <Text style={styles.highlightsTitle}>Tips</Text>
-                  {community.highlights.map((h) => (
+                  <Text style={styles.highlightsTitle}>Highlights</Text>
+                  {summary.highlights.map((h) => (
                     <Text key={h} style={styles.highlightItem}>💡 {h}</Text>
                   ))}
                 </View>
@@ -208,7 +239,7 @@ export default function VenueDetailScreen() {
       <View style={styles.actions}>
         <TouchableOpacity
           style={[styles.actionBtn, wantToGo && styles.actionBtnActive]}
-          onPress={() => setWantToGo(!wantToGo)}
+          onPress={handleWantToGo}
         >
           <Ionicons
             name={wantToGo ? 'heart' : 'heart-outline'}
