@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useRef, useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import BottomSheet from '@gorhom/bottom-sheet';
 import { EntityType } from '../../lib/types';
-import { mockRestaurants, mockHotels } from '../../lib/mockData';
+import { useVenues } from '../../lib/hooks';
 import EntityToggle from '../../components/EntityToggle';
 import VenueCard from '../../components/VenueCard';
 
@@ -13,17 +13,37 @@ export default function ExploreScreen() {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const snapPoints = useMemo(() => ['30%', '65%', '90%'], []);
 
-  const venues = entityType === 'restaurant' ? mockRestaurants : mockHotels;
+  const { data, isLoading, error, refetch } = useVenues(entityType);
+  const venues = data?.items ?? [];
 
-  const renderVenueList = useCallback(() => (
-    <FlatList
-      data={venues}
-      keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <VenueCard venue={item} />}
-      contentContainerStyle={{ paddingTop: 16, paddingBottom: 32 }}
-      showsVerticalScrollIndicator={false}
-    />
-  ), [venues]);
+  const renderVenueList = useCallback(() => {
+    if (isLoading) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 40 }}>
+          <ActivityIndicator size="large" color="#1A6B5A" />
+        </View>
+      );
+    }
+    if (error) {
+      return (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 40 }}>
+          <Text style={{ color: '#EF4444', fontSize: 15, marginBottom: 12 }}>Failed to load venues</Text>
+          <TouchableOpacity onPress={() => refetch()} style={{ backgroundColor: '#1A6B5A', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8 }}>
+            <Text style={{ color: '#FFFFFF', fontWeight: '600' }}>Retry</Text>
+          </TouchableOpacity>
+        </View>
+      );
+    }
+    return (
+      <FlatList
+        data={venues}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <VenueCard venue={item as any} />}
+        contentContainerStyle={{ paddingTop: 16, paddingBottom: 32 }}
+        showsVerticalScrollIndicator={false}
+      />
+    );
+  }, [venues, isLoading, error, refetch]);
 
   if (listView) {
     return (

@@ -1,23 +1,29 @@
-import React, { useState } from 'react';
-import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { EntityType } from '../../lib/types';
-import { mockRestaurants, mockHotels } from '../../lib/mockData';
+import { useCities, useCityRankings } from '../../lib/hooks';
 import EntityToggle from '../../components/EntityToggle';
 import ScoreBadge from '../../components/ScoreBadge';
 import { useRouter } from 'expo-router';
 
-const CITIES = ['New York', 'Los Angeles', 'San Francisco', 'Chicago', 'Miami'];
-
 export default function RankingsScreen() {
-  const [city, setCity] = useState('New York');
+  const [city, setCity] = useState('');
   const [showCityPicker, setShowCityPicker] = useState(false);
   const [entityType, setEntityType] = useState<EntityType>('restaurant');
   const router = useRouter();
 
-  const venues = (entityType === 'restaurant' ? mockRestaurants : mockHotels)
-    .filter((v) => v.city === city)
-    .sort((a, b) => b.compositeScore - a.compositeScore);
+  const { data: cities } = useCities();
+  const cityList = cities ?? [];
+
+  // Set initial city from first loaded city
+  useEffect(() => {
+    if (cityList.length > 0 && !city) {
+      setCity(cityList[0]);
+    }
+  }, [cityList, city]);
+
+  const { data: rankings, isLoading, error, refetch } = useCityRankings(city, entityType);
 
   return (
     <View style={styles.container}>
@@ -30,7 +36,7 @@ export default function RankingsScreen() {
 
       {showCityPicker && (
         <View style={styles.cityDropdown}>
-          {CITIES.map((c) => (
+          {cityList.map((c) => (
             <TouchableOpacity
               key={c}
               style={[styles.cityOption, c === city && styles.cityOptionActive]}
@@ -46,31 +52,44 @@ export default function RankingsScreen() {
         <EntityToggle value={entityType} onChange={setEntityType} />
       </View>
 
+      {isLoading ? (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 60 }}>
+          <ActivityIndicator size="large" color="#1A6B5A" />
+        </View>
+      ) : error ? (
+        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 60 }}>
+          <Text style={{ color: '#EF4444', fontSize: 15, marginBottom: 12 }}>Failed to load rankings</Text>
+          <TouchableOpacity onPress={() => refetch()} style={{ backgroundColor: '#1A6B5A', paddingHorizontal: 16, paddingVertical: 8, borderRadius: 8 }}>
+            <Text style={{ color: '#FFFFFF', fontWeight: '600' }}>Retry</Text>
+          </TouchableOpacity>
+        </View>
+      ) : (
       <FlatList
-        data={venues}
-        keyExtractor={(item) => item.id}
+        data={rankings ?? []}
+        keyExtractor={(item) => item.venue.id}
         contentContainerStyle={{ paddingBottom: 32 }}
-        renderItem={({ item, index }) => {
-          const tags = item.cuisineTags || item.amenityTags || [];
+        renderItem={({ item }) => {
+          const tags = item.venue.cuisine_tags || item.venue.tags || [];
+          const sources = Object.keys(item.source_scores || {});
           return (
             <TouchableOpacity
               style={styles.rankRow}
-              onPress={() => router.push(`/venue/${item.id}`)}
+              onPress={() => router.push(`/venue/${item.venue.id}`)}
               activeOpacity={0.7}
             >
-              <Text style={styles.rankNum}>#{index + 1}</Text>
+              <Text style={styles.rankNum}>#{item.rank}</Text>
               <View style={styles.rankInfo}>
-                <Text style={styles.rankName}>{item.name}</Text>
-                <Text style={styles.rankMeta}>{item.neighborhood} · {tags.slice(0, 2).join(', ')}</Text>
+                <Text style={styles.rankName}>{item.venue.name}</Text>
+                <Text style={styles.rankMeta}>{item.venue.city} · {tags.slice(0, 2).join(', ')}</Text>
                 <View style={styles.sourceBadges}>
-                  {item.sourceRatings.slice(0, 3).map((sr) => (
-                    <View key={sr.source} style={styles.sourceBadge}>
-                      <Text style={styles.sourceBadgeText}>{sr.source}</Text>
+                  {sources.slice(0, 3).map((source) => (
+                    <View key={source} style={styles.sourceBadge}>
+                      <Text style={styles.sourceBadgeText}>{source}</Text>
                     </View>
                   ))}
                 </View>
               </View>
-              <ScoreBadge score={item.compositeScore} />
+              <ScoreBadge score={item.composite_score} />
             </TouchableOpacity>
           );
         }}
@@ -80,6 +99,7 @@ export default function RankingsScreen() {
           </View>
         }
       />
+      )}
     </View>
   );
 }

@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from 'react';
-import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { EntityType } from '../../lib/types';
-import { allMockVenues } from '../../lib/mockData';
+import { useSearch } from '../../lib/hooks';
 import VenueCard from '../../components/VenueCard';
 
 const RECENT_SEARCHES = ['Le Bernardin', 'Thai food LES', 'rooftop hotel'];
@@ -10,22 +10,16 @@ const TRENDING = ['Tatiana', 'Dhamaka', 'Aman New York', 'Don Angie'];
 
 export default function SearchScreen() {
   const [query, setQuery] = useState('');
+  const [debouncedQuery, setDebouncedQuery] = useState('');
   const [filter, setFilter] = useState<EntityType | 'all'>('all');
 
-  const results = useMemo(() => {
-    if (!query.trim()) return [];
-    const q = query.toLowerCase();
-    return allMockVenues.filter((v) => {
-      const matchesText =
-        v.name.toLowerCase().includes(q) ||
-        v.cuisine?.toLowerCase().includes(q) ||
-        v.city.toLowerCase().includes(q) ||
-        v.cuisineTags?.some((t) => t.toLowerCase().includes(q)) ||
-        v.amenityTags?.some((t) => t.toLowerCase().includes(q));
-      const matchesFilter = filter === 'all' || v.type === filter;
-      return matchesText && matchesFilter;
-    });
-  }, [query, filter]);
+  useEffect(() => {
+    const timer = setTimeout(() => setDebouncedQuery(query.trim()), 300);
+    return () => clearTimeout(timer);
+  }, [query]);
+
+  const { data, isLoading } = useSearch(debouncedQuery, filter === 'all' ? undefined : filter);
+  const results = data?.items ?? [];
 
   const hasQuery = query.trim().length > 0;
 
@@ -65,10 +59,15 @@ export default function SearchScreen() {
       </View>
 
       {hasQuery ? (
+        isLoading ? (
+          <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', paddingTop: 60 }}>
+            <ActivityIndicator size="large" color="#1A6B5A" />
+          </View>
+        ) : (
         <FlatList
           data={results}
           keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <VenueCard venue={item} />}
+          renderItem={({ item }) => <VenueCard venue={item as any} />}
           contentContainerStyle={{ paddingTop: 12, paddingBottom: 32 }}
           ListEmptyComponent={
             <View style={styles.empty}>
@@ -77,6 +76,7 @@ export default function SearchScreen() {
             </View>
           }
         />
+        )
       ) : (
         <View style={styles.suggestions}>
           {/* Recent searches */}
