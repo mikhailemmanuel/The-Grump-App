@@ -29,6 +29,8 @@ class User(Base):
     display_name: Mapped[str] = mapped_column(String(100), nullable=False)
     avatar_url: Mapped[str | None] = mapped_column(Text)
     reviews_public: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True, nullable=False)
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
     reviews: Mapped[list["UserReview"]] = relationship(back_populates="user", cascade="all, delete-orphan")

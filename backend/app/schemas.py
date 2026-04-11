@@ -6,7 +6,15 @@ import uuid
 from datetime import date, datetime
 from typing import Any, Literal
 
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, field_validator
+
+from app.validation import (
+    MAX_COMMENT_LENGTH,
+    MAX_LIST_DESCRIPTION_LENGTH,
+    MAX_PHOTO_CAPTION_LENGTH,
+    MAX_SEARCH_QUERY_LENGTH,
+    validate_password_strength,
+)
 
 
 # ── Venues ────────────────────────────────────────────────────────────
@@ -82,7 +90,7 @@ class ReviewPhotoOut(BaseModel):
 
 class ReviewCreate(BaseModel):
     verdict: Literal["go_back", "iffy", "would_not_go_back"]
-    comment: str | None = None
+    comment: str | None = Field(None, max_length=2000)
     visited_at: date | None = None
 
 
@@ -120,6 +128,12 @@ class UserCreate(BaseModel):
     password: str = Field(min_length=8)
     display_name: str = Field(min_length=1, max_length=100)
 
+    @field_validator("password")
+    @classmethod
+    def check_password_strength(cls, v: str) -> str:
+        validate_password_strength(v)
+        return v
+
 
 class UserLogin(BaseModel):
     email: EmailStr
@@ -151,7 +165,7 @@ class UserSettingsUpdate(BaseModel):
 class CustomListCreate(BaseModel):
     name: str = Field(min_length=1, max_length=200)
     entity_type: Literal["restaurant", "hotel", "mixed"] = "mixed"
-    description: str | None = None
+    description: str | None = Field(None, max_length=500)
 
 
 class CustomListItemOut(BaseModel):
@@ -187,3 +201,24 @@ class SavedVenueOut(BaseModel):
     created_at: datetime
 
     model_config = {"from_attributes": True}
+
+
+# ── Token / Auth Schemas ─────────────────────────────────────────────
+
+
+class RefreshTokenOut(BaseModel):
+    access_token: str
+    refresh_token: str
+    token_type: str = "bearer"
+
+
+class RefreshTokenRequest(BaseModel):
+    refresh_token: str
+
+
+class LogoutRequest(BaseModel):
+    refresh_token: str | None = None
+
+
+class SearchQuery(BaseModel):
+    q: str = Field(max_length=200)

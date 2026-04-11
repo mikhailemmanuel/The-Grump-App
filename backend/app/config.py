@@ -10,8 +10,21 @@ class Settings(BaseSettings):
 
     # Auth
     secret_key: str = "change-me"
-    access_token_expire_minutes: int = 1440
     algorithm: str = "HS256"
+
+    # Security
+    allowed_origins: list[str] = ["http://localhost:8081", "exp://localhost:8081"]
+    environment: str = "dev"  # "dev" or "production"
+    secrets_backend: str = "env"  # "env" or "aws"
+
+    # Auth tokens
+    access_token_expire_minutes: int = 15
+    refresh_token_expire_days: int = 30
+
+    # Rate limiting
+    rate_limit_default: str = "100/minute"
+    rate_limit_authenticated: str = "300/minute"
+    rate_limit_auth_endpoints: str = "5/minute"
 
     # Google Places
     google_places_api_key: str = ""

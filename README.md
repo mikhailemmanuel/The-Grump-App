@@ -38,6 +38,21 @@ Scan the QR code with **Expo Go** on your phone.
 | Restaurants | Michelin Guide, The Infatuation, Eater, Beli, Google Reviews, Reddit |
 | Hotels | Michelin Hotels Guide, Condé Nast Traveler, Google Reviews, Reddit |
 
+## Security
+
+- JWT authentication with short-lived access tokens (15 min) + refresh tokens (30 days)
+- Token revocation via Redis blacklist
+- API rate limiting (100/min unauthenticated, 300/min authenticated, 5/min on auth)
+- Pre-signed S3 uploads (AWS credentials never exposed to client)
+- EXIF metadata stripping + image moderation pipeline
+- Security headers (X-Content-Type-Options, X-Frame-Options, HSTS, etc.)
+- Configurable CORS origins
+- Password strength enforcement
+- Role-based authorization (owner, admin)
+- Pluggable secrets provider (env vars / AWS Secrets Manager)
+
+Run security audit: `./scripts/security-check.sh`
+
 ## License
 
 Private — All rights reserved.
