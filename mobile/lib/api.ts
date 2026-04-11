@@ -16,7 +16,9 @@ import type {
   SavedVenueOut,
 } from './types';
 
-const BASE_URL = __DEV__ ? 'http://localhost:8000' : 'https://api.foodgrump.com';
+import { API_BASE_URL } from './config';
+
+const BASE_URL = API_BASE_URL;
 
 // ── Core fetch with 401 refresh-and-retry ───────────────────────────────────
 

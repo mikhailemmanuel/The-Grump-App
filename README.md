@@ -53,6 +53,127 @@ Scan the QR code with **Expo Go** on your phone.
 
 Run security audit: `./scripts/security-check.sh`
 
+## Deployment
+
+### Option A: Docker Compose (self-hosted / VPS)
+
+```bash
+# 1. Clone and configure
+git clone https://github.com/mikhailemmanuel/TravelGrump-FoodGrump-HotelGrump.git
+cd TravelGrump-FoodGrump-HotelGrump
+cp backend/.env.example backend/.env
+# Edit backend/.env with your API keys
+
+# 2. Start all services (API + PostgreSQL + Redis + Celery worker + Celery beat)
+docker compose -f docker-compose.prod.yml up -d
+
+# 3. Verify
+curl http://localhost:8000/    # → {"status": "ok", "service": "foodgrump"}
+
+# 4. Run scrapers to populate data
+docker compose -f docker-compose.prod.yml exec api bash scripts/run_scrapers.sh
+
+# 5. Monitor
+docker compose -f docker-compose.prod.yml logs -f
+```
+
+### Option B: Fly.io (recommended for quick start)
+
+```bash
+# 1. Install Fly CLI: https://fly.io/docs/getting-started/installing-flyctl/
+# 2. Sign up / log in
+fly auth login
+
+# 3. Create app + managed Postgres + Redis
+cd backend
+fly launch --copy-config    # uses existing fly.toml
+fly postgres create --name foodgrump-db
+fly postgres attach foodgrump-db
+fly redis create --name foodgrump-redis
+
+# 4. Set secrets
+fly secrets set \
+  SECRET_KEY="$(openssl rand -hex 32)" \
+  GOOGLE_PLACES_API_KEY="your-key" \
+  OPENAI_API_KEY="your-key" \
+  REDDIT_CLIENT_ID="your-id" \
+  REDDIT_CLIENT_SECRET="your-secret" \
+  BELI_EMAIL="your-email" \
+  BELI_PASSWORD="your-password" \
+  AWS_ACCESS_KEY_ID="your-key" \
+  AWS_SECRET_ACCESS_KEY="your-secret" \
+  AWS_S3_BUCKET="foodgrump-photos" \
+  ALLOWED_ORIGINS='["https://foodgrump.com"]' \
+  ENVIRONMENT="production"
+
+# 5. Deploy
+fly deploy
+
+# 6. Scale worker + beat processes
+fly scale count worker=1 beat=1
+
+# 7. Run scrapers
+fly ssh console -C "cd /app && bash scripts/run_scrapers.sh"
+```
+
+### Option C: Railway
+
+```bash
+# 1. Install Railway CLI: https://docs.railway.app/guides/cli
+railway login
+
+# 2. Create project
+railway init
+
+# 3. Add PostgreSQL + Redis plugins via Railway dashboard
+
+# 4. Set environment variables via Railway dashboard (same as Fly.io secrets above)
+
+# 5. Deploy
+railway up
+
+# 6. Run scrapers via Railway shell
+railway run bash backend/scripts/run_scrapers.sh
+```
+
+### After Deployment
+
+Update the mobile app to point to your deployed API:
+
+```bash
+# In mobile/lib/config.ts, update PROD_URL:
+const PROD_URL = 'https://your-app.fly.dev';  # or your Railway URL
+```
+
+## Scraper Management
+
+```bash
+# Run all scrapers manually
+cd backend && bash scripts/run_scrapers.sh
+
+# Run without Reddit (if you don't have Reddit API keys yet)
+bash scripts/run_scrapers.sh --skip-reddit
+
+# Run without ranking computation
+bash scripts/run_scrapers.sh --skip-rankings
+```
+
+Scrapers also run automatically via Celery Beat on this schedule:
+| Scraper | Frequency | Time (UTC) |
+|---------|-----------|------------|
+| Michelin Restaurants | Weekly (Sun) | 2:00 AM |
+| Michelin Hotels | Weekly (Sun) | 3:00 AM |
+| Condé Nast | Weekly (Sun) | 4:00 AM |
+| Google Reviews | Weekly (Sun/Mon) | 5:00 AM |
+| Beli | Daily | 6:00 AM |
+| Reddit (Restaurants) | Daily | 7:00 AM |
+| Reddit (Hotels) | Daily | 8:00 AM |
+| Infatuation | Weekly (Mon) | 2:00 AM |
+| Eater | Weekly (Mon) | 3:00 AM |
+| Reservation Matching | Daily | 9:00 AM |
+| Compute Rankings | Daily | 10:00 AM |
+| AI Summaries | Daily | 11:00 AM |
+
 ## License
 
 Private — All rights reserved.
