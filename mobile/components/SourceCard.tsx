@@ -1,6 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
-import { SourceRating } from '../lib/types';
+interface SourceRating {
+  source: string;
+  rating: string;
+  url?: string;
+  icon?: string;
+}
 
 interface Props {
   source: SourceRating;
