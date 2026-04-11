@@ -43,6 +43,10 @@ class Settings(BaseSettings):
     beli_email: str = ""
     beli_password: str = ""
 
+    # Reddit
+    reddit_client_id: str = ""
+    reddit_client_secret: str = ""
+
     model_config = {"env_file": ".env", "extra": "ignore"}
 
 
