@@ -20,13 +20,15 @@ _USER_AGENT = (
     "Chrome/125.0.0.0 Safari/537.36 FoodGrumpBot/1.0"
 )
 
+DEFAULT_CITIES = [
+    ("Bangkok", "bangkok"),
+    ("Chiang Mai", "chiang-mai"),
+    ("Phuket", "phuket"),
+]
+
 _CITIES = {
-    "new-york": {"city": "New York", "country": "US"},
-    "los-angeles": {"city": "Los Angeles", "country": "US"},
-    "san-francisco": {"city": "San Francisco", "country": "US"},
-    "chicago": {"city": "Chicago", "country": "US"},
-    "london": {"city": "London", "country": "GB"},
-    "paris": {"city": "Paris", "country": "FR"},
+    slug: {"city": city, "country": "TH"}
+    for city, slug in DEFAULT_CITIES
 }
 
 _BASE_URL = "https://www.theinfatuation.com"
@@ -169,11 +171,18 @@ class InfatuationScraper(BaseScraper):
             href = link_el.get("href", "")
             source_url = href if href.startswith("http") else f"{_BASE_URL}{href}"
 
-        # Rating
+        # Rating — fall back to 6.0 for unrated/featured listings
         rating_el = card.select_one(
             "span.rating, [data-testid='rating'], span.score, div.rating-label"
         )
-        rating = self._parse_rating(rating_el.get_text() if rating_el else None)
+        try:
+            rating = self._parse_rating(rating_el.get_text() if rating_el else None)
+        except Exception:
+            rating = None
+        is_featured = rating is None
+        if is_featured:
+            logger.info("No rating for %s — marking as featured", name)
+            rating = 6.0
 
         # Price level
         price_el = card.select_one("span.price, [data-testid='price']")
@@ -220,7 +229,7 @@ class InfatuationScraper(BaseScraper):
                 title=name,
                 snippet=snippet,
                 rating=rating,
-                awards=None,
+                awards=["infatuation_featured"] if is_featured else None,
             )
             session.commit()
         logger.debug("Upserted %s in %s (rating=%s)", name, city, rating)
