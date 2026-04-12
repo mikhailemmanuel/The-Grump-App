@@ -9,7 +9,7 @@ primary_region = "iad"
   dockerfile = "Dockerfile"
 
 [deploy]
-  release_command = "sh -c 'PYTHONPATH=/app alembic upgrade head'"
+  release_command = "python /app/scripts/migrate.py"
 
 [env]
   ENVIRONMENT = "production"
