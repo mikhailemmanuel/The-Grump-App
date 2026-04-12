@@ -1,6 +1,5 @@
 import json
 from pydantic_settings import BaseSettings
-from pydantic import field_validator
 
 
 class Settings(BaseSettings):
@@ -14,21 +13,20 @@ class Settings(BaseSettings):
     secret_key: str = "change-me"
     algorithm: str = "HS256"
 
-    # Security
-    allowed_origins: list[str] = ["http://localhost:8081", "exp://localhost:8081"]
+    # Security — stored as plain str to avoid pydantic-settings JSON parsing issues
+    allowed_origins: str = "http://localhost:8081,exp://localhost:8081"
     environment: str = "dev"  # "dev" or "production"
     secrets_backend: str = "env"  # "env" or "aws"
 
-    @field_validator("allowed_origins", mode="before")
-    @classmethod
-    def parse_origins(cls, v):
-        """Handle ALLOWED_ORIGINS as JSON string or list."""
-        if isinstance(v, str):
+    def get_allowed_origins(self) -> list[str]:
+        """Parse allowed_origins into a list. Accepts JSON array or comma-separated."""
+        v = self.allowed_origins.strip()
+        if v.startswith("["):
             try:
                 return json.loads(v)
             except (json.JSONDecodeError, TypeError):
-                return [s.strip() for s in v.split(",") if s.strip()]
-        return v
+                pass
+        return [s.strip() for s in v.split(",") if s.strip()]
 
     # Auth tokens
     access_token_expire_minutes: int = 15
