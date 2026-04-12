@@ -23,20 +23,20 @@ primary_region = "iad"
   processes = ["app"]
 
 [[http_service.checks]]
-  grace_period = "30s"
+  grace_period = "60s"
   interval = "30s"
   method = "GET"
-  timeout = "10s"
+  timeout = "15s"
   path = "/"
 
 [processes]
-  app = "uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2"
+  app = "uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 1"
   # worker and beat removed for now — scrapers run manually via scripts/run_scrapers.sh
   # To re-enable later, uncomment:
   # worker = "celery -A app.celery_app.celery worker --loglevel=info --concurrency=2"
   # beat = "celery -A app.celery_app.celery beat --loglevel=info"
 
 [[vm]]
-  memory = "512mb"
+  memory = "256mb"
   cpu_kind = "shared"
   cpus = 1
