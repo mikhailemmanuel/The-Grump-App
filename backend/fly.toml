@@ -31,8 +31,10 @@ primary_region = "iad"
 
 [processes]
   app = "uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2"
-  worker = "celery -A app.celery_app.celery worker --loglevel=info --concurrency=2"
-  beat = "celery -A app.celery_app.celery beat --loglevel=info"
+  # worker and beat removed for now — scrapers run manually via scripts/run_scrapers.sh
+  # To re-enable later, uncomment:
+  # worker = "celery -A app.celery_app.celery worker --loglevel=info --concurrency=2"
+  # beat = "celery -A app.celery_app.celery beat --loglevel=info"
 
 [[vm]]
   memory = "512mb"
