@@ -5,7 +5,7 @@ from celery.schedules import crontab
 
 from app.config import settings
 
-celery = Celery("foodgrump", broker=settings.redis_url, backend=settings.redis_url)
+celery = Celery("foodgrump", broker=settings.get_redis_url(), backend=settings.get_redis_url())
 
 celery.conf.update(
     task_serializer="json",

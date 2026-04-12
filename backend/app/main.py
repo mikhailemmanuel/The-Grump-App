@@ -15,7 +15,7 @@ from app.database import engine
 from app.middleware.security_headers import SecurityHeadersMiddleware
 from app.routers import auth_routes, cities, search, users, uploads, venues
 
-limiter = Limiter(key_func=get_remote_address, storage_uri=settings.redis_url)
+limiter = Limiter(key_func=get_remote_address, storage_uri=settings.get_redis_url())
 
 
 @asynccontextmanager

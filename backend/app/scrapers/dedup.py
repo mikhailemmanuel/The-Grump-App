@@ -36,7 +36,7 @@ class GooglePlacesDedup:
 
     def __init__(self) -> None:
         self.api_key = settings.google_places_api_key
-        self.redis = redis.Redis.from_url(settings.redis_url, decode_responses=True)
+        self.redis = redis.Redis.from_url(settings.get_redis_url(), decode_responses=True)
 
     # ── public API ────────────────────────────────────────────────────
 

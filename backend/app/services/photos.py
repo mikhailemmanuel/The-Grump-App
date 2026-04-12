@@ -3,7 +3,7 @@ import boto3
 import logging
 from datetime import datetime, timezone
 from app.config import settings
-from app.celery_app import celery_app
+from app.celery_app import celery
 
 ALLOWED_TYPES = {"image/jpeg", "image/png", "image/webp"}
 MAGIC_BYTES = {
@@ -47,7 +47,7 @@ def validate_magic_bytes(data: bytes) -> str | None:
     return None
 
 
-@celery_app.task(name="app.services.photos.strip_exif")
+@celery.task(name="app.services.photos.strip_exif")
 def strip_exif(object_key: str):
     """Download image from S3, strip EXIF, re-upload."""
     logger = logging.getLogger(__name__)
@@ -79,7 +79,7 @@ def strip_exif(object_key: str):
         logger.exception("Failed to strip EXIF from %s", object_key)
 
 
-@celery_app.task(name="app.services.photos.moderate_image")
+@celery.task(name="app.services.photos.moderate_image")
 def moderate_image(object_key: str):
     """Run image through moderation (OpenAI or Rekognition). Log if flagged."""
     logger = logging.getLogger(__name__)

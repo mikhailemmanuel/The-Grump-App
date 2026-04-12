@@ -28,6 +28,14 @@ class Settings(BaseSettings):
                 pass
         return [s.strip() for s in v.split(",") if s.strip()]
 
+    def get_redis_url(self) -> str:
+        """Return Redis URL, upgrading to rediss:// (TLS) for non-localhost hosts."""
+        url = self.redis_url
+        if "localhost" not in url and "127.0.0.1" not in url:
+            if url.startswith("redis://") and not url.startswith("rediss://"):
+                url = "rediss://" + url[len("redis://"):]
+        return url
+
     # Auth tokens
     access_token_expire_minutes: int = 15
     refresh_token_expire_days: int = 30
