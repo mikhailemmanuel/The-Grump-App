@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import json
 import logging
-import os
 import time
 from datetime import datetime, timezone
 
@@ -20,78 +19,62 @@ from app.scrapers.dedup import GooglePlacesDedup
 logger = logging.getLogger(__name__)
 
 # ── Reddit configuration ───────────────────────────────────────────────
+# Uses public .json endpoints (no OAuth/API key required).
 
-_REDDIT_TOKEN_URL = "https://www.reddit.com/api/v1/access_token"
-_REDDIT_SEARCH_URL = "https://oauth.reddit.com/r/{subreddit}/search"
-_REDDIT_COMMENTS_URL = "https://oauth.reddit.com/comments/{article_id}"
+_REDDIT_SEARCH_URL = "https://old.reddit.com/r/{subreddit}/search.json"
+_REDDIT_COMMENTS_URL = "https://old.reddit.com/comments/{article_id}.json"
 
-_USER_AGENT = "FoodGrump/1.0 (scraper)"
-_REQUEST_DELAY = 2  # seconds between Reddit API calls
+_USER_AGENT = "FoodGrump/1.0 (restaurant aggregator)"
+_REQUEST_DELAY = 2  # seconds between Reddit requests (rate-limit protection)
+_MIN_SCORE = 3  # minimum upvotes to include a thread/comment
 
-_RESTAURANT_SUBREDDITS = [
-    "FoodNYC",
-    "AskSF",
-    "chicagofood",
-    "foodlosangeles",
-    "londonfoodies",
-    "TokyoFoods",
-    "parisfoodies",
-]
+RESTAURANT_SUBREDDITS = ["Bangkok", "Thailand", "ChiangMai", "ThailandTourism", "BangkokFood"]
+RESTAURANT_QUERIES = ["best restaurant", "food recommendation", "where to eat", "restaurant recommendation"]
 
-_HOTEL_SUBREDDITS = [
-    "fattravel",
-    "travel",
-    "solotravel",
-    "luxurytravel",
-    "hotels",
-    "JapanTravel",
-    "VisitingNYC",
-]
-
-_RESTAURANT_QUERIES = ["best restaurant", "recommendation", "where to eat"]
-_HOTEL_QUERIES = ["best hotel", "where to stay", "hotel recommendation"]
+HOTEL_SUBREDDITS = ["Bangkok", "Thailand", "ChiangMai", "ThailandTourism", "solotravel", "travel"]
+HOTEL_QUERIES = ["best hotel", "where to stay", "hotel recommendation", "accommodation"]
 
 _SENTIMENT_SCORES = {"positive": 0.9, "mixed": 0.5, "negative": 0.2}
 
-# ── Reddit OAuth helpers ───────────────────────────────────────────────
+# ── Reddit public .json helpers ────────────────────────────────────────
+
+_HEADERS = {"User-Agent": _USER_AGENT}
 
 
-def _get_reddit_token() -> str:
-    """Obtain a Reddit OAuth bearer token using client credentials flow."""
-    client_id = os.environ.get("REDDIT_CLIENT_ID", "")
-    client_secret = os.environ.get("REDDIT_CLIENT_SECRET", "")
+def _reddit_get(url: str, params: dict | None = None) -> httpx.Response:
+    """Make a GET request to Reddit with rate-limit handling.
 
-    resp = httpx.post(
-        _REDDIT_TOKEN_URL,
-        auth=(client_id, client_secret),
-        data={"grant_type": "client_credentials"},
-        headers={"User-Agent": _USER_AGENT},
-        timeout=10,
-    )
-    resp.raise_for_status()
-    return resp.json()["access_token"]
-
-
-def _reddit_headers(token: str) -> dict[str, str]:
-    return {
-        "Authorization": f"Bearer {token}",
-        "User-Agent": _USER_AGENT,
-    }
+    On 429 (rate limited), sleeps 60s and retries once.
+    Always sleeps ``_REQUEST_DELAY`` after a successful request.
+    """
+    for attempt in range(2):
+        resp = httpx.get(url, params=params, headers=_HEADERS, timeout=15)
+        if resp.status_code == 429:
+            if attempt == 0:
+                logger.warning("Reddit 429 rate limited — sleeping 60s before retry")
+                time.sleep(60)
+                continue
+            else:
+                resp.raise_for_status()
+        resp.raise_for_status()
+        time.sleep(_REQUEST_DELAY)
+        return resp
+    # Should not reach here, but satisfy type checker
+    raise httpx.HTTPError("Reddit request failed after retries")  # type: ignore[call-arg]
 
 
 # ── Reddit search + comment fetching ──────────────────────────────────
 
 
 def _search_subreddit(
-    token: str,
     subreddit: str,
     query: str,
-    limit: int = 50,
+    limit: int = 25,
 ) -> list[dict]:
-    """Search a subreddit for threads matching query. Returns listing data."""
+    """Search a subreddit for threads matching query. Returns listing children."""
     url = _REDDIT_SEARCH_URL.format(subreddit=subreddit)
     try:
-        resp = httpx.get(
+        resp = _reddit_get(
             url,
             params={
                 "q": query,
@@ -100,36 +83,29 @@ def _search_subreddit(
                 "restrict_sr": "on",
                 "t": "year",
             },
-            headers=_reddit_headers(token),
-            timeout=15,
         )
-        resp.raise_for_status()
-        time.sleep(_REQUEST_DELAY)
-        return resp.json().get("data", {}).get("children", [])
+        children = resp.json().get("data", {}).get("children", [])
+        # Filter by minimum score
+        return [c for c in children if c.get("data", {}).get("score", 0) >= _MIN_SCORE]
     except httpx.HTTPError:
         logger.exception("Reddit search failed: r/%s q=%s", subreddit, query)
         return []
 
 
-def _fetch_thread_comments(token: str, article_id: str, limit: int = 50) -> list[str]:
+def _fetch_thread_comments(article_id: str, limit: int = 50) -> list[str]:
     """Fetch top comments from a Reddit thread. Returns comment body texts."""
     url = _REDDIT_COMMENTS_URL.format(article_id=article_id)
     try:
-        resp = httpx.get(
-            url,
-            params={"sort": "top", "limit": limit},
-            headers=_reddit_headers(token),
-            timeout=15,
-        )
-        resp.raise_for_status()
-        time.sleep(_REQUEST_DELAY)
+        resp = _reddit_get(url, params={"sort": "top", "limit": limit})
 
         listings = resp.json()
         comments: list[str] = []
         if len(listings) >= 2:
             for child in listings[1].get("data", {}).get("children", []):
-                body = child.get("data", {}).get("body", "")
-                if body and len(body) > 20:
+                cdata = child.get("data", {})
+                body = cdata.get("body", "")
+                score = cdata.get("score", 0)
+                if body and len(body) > 20 and score >= _MIN_SCORE:
                     comments.append(body[:2000])  # cap long comments
         return comments
     except httpx.HTTPError:
@@ -206,14 +182,13 @@ class _RedditBaseScraper(BaseScraper):
     queries: list[str]
 
     def scrape(self) -> int:
-        token = _get_reddit_token()
         dedup = GooglePlacesDedup()
         count = 0
 
         for subreddit in self.subreddits:
             for query in self.queries:
                 try:
-                    threads = _search_subreddit(token, subreddit, query, limit=50)
+                    threads = _search_subreddit(subreddit, query)
                 except Exception:
                     logger.exception(
                         "Search error r/%s q=%s", subreddit, query
@@ -230,7 +205,7 @@ class _RedditBaseScraper(BaseScraper):
                         continue
 
                     try:
-                        comments = _fetch_thread_comments(token, article_id)
+                        comments = _fetch_thread_comments(article_id)
                     except Exception:
                         logger.exception("Comment fetch error: %s", article_id)
                         continue
@@ -308,8 +283,8 @@ class _RedditBaseScraper(BaseScraper):
 class RedditRestaurantScraper(_RedditBaseScraper):
     """Scrape Reddit for restaurant recommendations."""
 
-    subreddits = _RESTAURANT_SUBREDDITS
-    queries = _RESTAURANT_QUERIES
+    subreddits = RESTAURANT_SUBREDDITS
+    queries = RESTAURANT_QUERIES
 
     def __init__(self) -> None:
         super().__init__(source="reddit", entity_type="restaurant")
@@ -318,8 +293,8 @@ class RedditRestaurantScraper(_RedditBaseScraper):
 class RedditHotelScraper(_RedditBaseScraper):
     """Scrape Reddit for hotel recommendations."""
 
-    subreddits = _HOTEL_SUBREDDITS
-    queries = _HOTEL_QUERIES
+    subreddits = HOTEL_SUBREDDITS
+    queries = HOTEL_QUERIES
 
     def __init__(self) -> None:
         super().__init__(source="reddit", entity_type="hotel")
