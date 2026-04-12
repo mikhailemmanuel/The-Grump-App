@@ -16,20 +16,11 @@ from app.scrapers.dedup import GooglePlacesDedup
 
 logger = logging.getLogger(__name__)
 
-# Default cities to scrape when no explicit list is provided.
+# Thailand-focused cities for initial launch.  Override via constructor.
 DEFAULT_CITIES: list[dict[str, str]] = [
-    {"city": "Paris", "country": "France", "slug": "fr/ile-de-france/paris"},
-    {"city": "London", "country": "United Kingdom", "slug": "gb/greater-london/london"},
-    {"city": "Tokyo", "country": "Japan", "slug": "jp/tokyo"},
-    {"city": "New York", "country": "United States", "slug": "us/new-york-state/new-york"},
-    {"city": "Rome", "country": "Italy", "slug": "it/lazio/roma"},
-    {"city": "Barcelona", "country": "Spain", "slug": "es/cataluna/barcelona"},
-    {"city": "Bangkok", "country": "Thailand", "slug": "th/bangkok"},
-    {"city": "Singapore", "country": "Singapore", "slug": "sg/singapore"},
-    {"city": "Hong Kong", "country": "China", "slug": "cn/hong-kong"},
-    {"city": "Dubai", "country": "United Arab Emirates", "slug": "ae/dubai"},
-    {"city": "Kyoto", "country": "Japan", "slug": "jp/kyoto"},
-    {"city": "Florence", "country": "Italy", "slug": "it/toscana/firenze"},
+    {"city": "Bangkok", "country": "Thailand", "slug": "thailand/bangkok"},
+    {"city": "Chiang Mai", "country": "Thailand", "slug": "thailand/chiang-mai"},
+    {"city": "Phuket", "country": "Thailand", "slug": "thailand/phuket"},
 ]
 
 _BASE_URL = "https://guide.michelin.com/en"

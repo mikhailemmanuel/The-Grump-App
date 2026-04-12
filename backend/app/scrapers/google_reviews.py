@@ -1,4 +1,8 @@
-"""Scraper that pulls Google Places ratings into FoodGrump recommendations."""
+"""Scraper that pulls Google Places ratings into FoodGrump recommendations.
+
+This scraper enriches existing venues with Google Places data — it works for
+any city globally and requires no city-specific configuration.
+"""
 
 from __future__ import annotations
 

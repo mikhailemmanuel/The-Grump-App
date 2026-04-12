@@ -1,4 +1,9 @@
-"""Condé Nast Traveler scraper — hotel awards (Gold List, Hot List, Readers' Choice)."""
+"""Condé Nast Traveler scraper — hotel awards (Gold List, Hot List, Readers' Choice).
+
+Thailand coverage is strong for resort/luxury hotels (Bangkok, Phuket).
+Award lists are global — no city filtering needed; hotels are matched by city
+extracted from each article page.
+"""
 
 from __future__ import annotations
 

@@ -18,16 +18,11 @@ logger = logging.getLogger(__name__)
 
 BASE_URL = "https://guide.michelin.com"
 
-# Major cities to scrape by default.  Override via constructor.
+# Thailand-focused cities for initial launch.  Override via constructor.
+# Note: Phuket is NOT in the Michelin Guide, so only Bangkok and Chiang Mai are included.
 DEFAULT_CITIES: list[dict[str, str]] = [
-    {"slug": "us/new-york/restaurants", "city": "New York", "country": "US"},
-    {"slug": "gb/london/restaurants", "city": "London", "country": "GB"},
-    {"slug": "fr/paris/restaurants", "city": "Paris", "country": "FR"},
-    {"slug": "jp/tokyo/restaurants", "city": "Tokyo", "country": "JP"},
-    {"slug": "it/rome/restaurants", "city": "Rome", "country": "IT"},
-    {"slug": "es/barcelona/restaurants", "city": "Barcelona", "country": "ES"},
-    {"slug": "de/berlin/restaurants", "city": "Berlin", "country": "DE"},
-    {"slug": "dk/copenhagen/restaurants", "city": "Copenhagen", "country": "DK"},
+    {"slug": "thailand/bangkok/restaurants", "city": "Bangkok", "country": "TH"},
+    {"slug": "thailand/chiang-mai/restaurants", "city": "Chiang Mai", "country": "TH"},
 ]
 
 _DISTINCTION_MAP: dict[str, list[str]] = {

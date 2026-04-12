@@ -21,7 +21,7 @@ _USER_AGENT = (
     "Chrome/125.0.0.0 Safari/537.36 FoodGrumpBot/1.0"
 )
 
-# city-slug → (display city, country, eater subdomain)
+# Eater covers US cities only — no Thailand coverage. These defaults are kept for future US expansion.
 _CITIES: dict[str, dict[str, str]] = {
     "new-york": {"city": "New York", "country": "US", "subdomain": "ny"},
     "los-angeles": {"city": "Los Angeles", "country": "US", "subdomain": "la"},
