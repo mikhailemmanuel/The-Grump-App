@@ -51,6 +51,81 @@ def main():
         traceback.print_exc()
         sys.exit(1)
 
+    # Clean up partial migration state (from previous failed attempts)
+    print("Checking for partial migration state...", flush=True)
+    try:
+        from sqlalchemy import create_engine, text, inspect
+        engine = create_engine(sync_url, pool_pre_ping=True)
+        inspector = inspect(engine)
+        existing_tables = inspector.get_table_names()
+
+        with engine.connect() as conn:
+            # Check if alembic_version table exists and has our migration
+            has_alembic = "alembic_version" in existing_tables
+            migration_done = False
+            if has_alembic:
+                result = conn.execute(text("SELECT version_num FROM alembic_version"))
+                versions = [row[0] for row in result]
+                migration_done = "001_initial" in versions
+                print(f"  Alembic versions: {versions}", flush=True)
+
+            # If enum types exist but migration isn't recorded as done, we have partial state
+            has_our_tables = "venues" in existing_tables
+            if has_our_tables and migration_done:
+                print("  Migration 001_initial already applied — nothing to do.", flush=True)
+                engine.dispose()
+                print("=== Migrations complete! ===", flush=True)
+                sys.exit(0)
+
+            if has_our_tables and not migration_done:
+                print("  PARTIAL STATE DETECTED — cleaning up...", flush=True)
+                # Drop all our tables and types so migration can run clean
+                tables_to_drop = [
+                    "scrape_jobs", "custom_list_items", "custom_lists",
+                    "saved_venues", "want_to_go", "venue_summaries",
+                    "review_photos", "user_reviews", "users",
+                    "city_rankings", "reservation_links", "recommendations", "venues",
+                ]
+                for t in tables_to_drop:
+                    if t in existing_tables:
+                        conn.execute(text(f'DROP TABLE IF EXISTS "{t}" CASCADE'))
+                        print(f"    Dropped table: {t}", flush=True)
+
+                # Drop enum types
+                for enum_name in ["scrape_status", "list_entity_type", "verdict_type",
+                                  "platform_type", "source_type", "entity_type"]:
+                    conn.execute(text(f"DROP TYPE IF EXISTS {enum_name} CASCADE"))
+                    print(f"    Dropped type: {enum_name}", flush=True)
+
+                # Drop alembic version tracking
+                if has_alembic:
+                    conn.execute(text("DELETE FROM alembic_version"))
+                    print("    Cleared alembic_version", flush=True)
+
+                conn.commit()
+                print("  Cleanup done.", flush=True)
+            else:
+                # Check if just enum types exist without tables (very partial)
+                result = conn.execute(text(
+                    "SELECT typname FROM pg_type WHERE typname IN "
+                    "('entity_type','source_type','platform_type','verdict_type','list_entity_type','scrape_status')"
+                ))
+                existing_types = [row[0] for row in result]
+                if existing_types and not has_our_tables:
+                    print(f"  Orphan enum types found: {existing_types} — cleaning...", flush=True)
+                    for enum_name in existing_types:
+                        conn.execute(text(f"DROP TYPE IF EXISTS {enum_name} CASCADE"))
+                    if has_alembic:
+                        conn.execute(text("DELETE FROM alembic_version"))
+                    conn.commit()
+                    print("  Orphan types cleaned.", flush=True)
+                else:
+                    print("  No partial state — clean database.", flush=True)
+
+        engine.dispose()
+    except Exception as e:
+        print(f"WARNING: Partial state check failed (non-fatal): {e}", flush=True)
+
     # Run Alembic migrations
     print("Running Alembic migrations...", flush=True)
     try:

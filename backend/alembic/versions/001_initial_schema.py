@@ -20,29 +20,22 @@ def upgrade() -> None:
     op.execute("CREATE EXTENSION IF NOT EXISTS postgis")
 
     # ── Enum types ────────────────────────────────────────────────────
-    entity_type = postgresql.ENUM("restaurant", "hotel", name="entity_type", create_type=False)
+    # Created via raw SQL with IF NOT EXISTS for idempotency.
+    # Column types use sa.String() to avoid SQLAlchemy DDL events;
+    # the ORM models enforce enum values at the application level.
+    # These types are kept for documentation / potential future use.
     op.execute("DO $$ BEGIN CREATE TYPE entity_type AS ENUM ('restaurant', 'hotel'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
-
-    source_type = postgresql.ENUM("reddit", "infatuation", "eater", "beli", "michelin", "google", "conde_nast", name="source_type", create_type=False)
     op.execute("DO $$ BEGIN CREATE TYPE source_type AS ENUM ('reddit', 'infatuation', 'eater', 'beli', 'michelin', 'google', 'conde_nast'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
-
-    platform_type = postgresql.ENUM("resy", "opentable", "sevenrooms", "tock", "yelp_reservations", "booking_com", "hotels_com", "expedia", "hotel_direct", name="platform_type", create_type=False)
     op.execute("DO $$ BEGIN CREATE TYPE platform_type AS ENUM ('resy', 'opentable', 'sevenrooms', 'tock', 'yelp_reservations', 'booking_com', 'hotels_com', 'expedia', 'hotel_direct'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
-
-    verdict_type = postgresql.ENUM("go_back", "iffy", "would_not_go_back", name="verdict_type", create_type=False)
     op.execute("DO $$ BEGIN CREATE TYPE verdict_type AS ENUM ('go_back', 'iffy', 'would_not_go_back'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
-
-    list_entity_type = postgresql.ENUM("restaurant", "hotel", "mixed", name="list_entity_type", create_type=False)
     op.execute("DO $$ BEGIN CREATE TYPE list_entity_type AS ENUM ('restaurant', 'hotel', 'mixed'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
-
-    scrape_status = postgresql.ENUM("pending", "running", "done", "failed", name="scrape_status", create_type=False)
     op.execute("DO $$ BEGIN CREATE TYPE scrape_status AS ENUM ('pending', 'running', 'done', 'failed'); EXCEPTION WHEN duplicate_object THEN NULL; END $$")
 
     # ── venues ────────────────────────────────────────────────────────
     op.create_table(
         "venues",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
-        sa.Column("entity_type", sa.Enum("restaurant", "hotel", name="entity_type", create_type=False), nullable=False, index=True),
+        sa.Column("entity_type", sa.String(20), nullable=False, index=True),
         sa.Column("name", sa.Text, nullable=False),
         sa.Column("normalized_name", sa.Text, nullable=False, index=True),
         sa.Column("address", sa.Text),
@@ -65,7 +58,7 @@ def upgrade() -> None:
         "recommendations",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
         sa.Column("venue_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("venues.id", ondelete="CASCADE"), nullable=False, index=True),
-        sa.Column("source", sa.Enum("reddit", "infatuation", "eater", "beli", "michelin", "google", "conde_nast", name="source_type", create_type=False), nullable=False, index=True),
+        sa.Column("source", sa.String(20), nullable=False, index=True),
         sa.Column("source_url", sa.Text),
         sa.Column("title", sa.Text),
         sa.Column("snippet", sa.Text),
@@ -80,7 +73,7 @@ def upgrade() -> None:
         "reservation_links",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
         sa.Column("venue_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("venues.id", ondelete="CASCADE"), nullable=False, index=True),
-        sa.Column("platform", sa.Enum("resy", "opentable", "sevenrooms", "tock", "yelp_reservations", "booking_com", "hotels_com", "expedia", "hotel_direct", name="platform_type", create_type=False), nullable=False),
+        sa.Column("platform", sa.String(30), nullable=False),
         sa.Column("booking_url", sa.Text, nullable=False),
         sa.Column("venue_id_ext", sa.String(255)),
         sa.Column("verified_at", sa.DateTime(timezone=True)),
@@ -91,7 +84,7 @@ def upgrade() -> None:
         "city_rankings",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
         sa.Column("venue_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("venues.id", ondelete="CASCADE"), nullable=False, index=True),
-        sa.Column("entity_type", sa.Enum("restaurant", "hotel", name="entity_type", create_type=False), nullable=False, index=True),
+        sa.Column("entity_type", sa.String(20), nullable=False, index=True),
         sa.Column("city", sa.String(255), nullable=False, index=True),
         sa.Column("composite_score", sa.Float, nullable=False),
         sa.Column("rank", sa.Integer, nullable=False),
@@ -119,7 +112,7 @@ def upgrade() -> None:
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
         sa.Column("user_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True),
         sa.Column("venue_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("venues.id", ondelete="CASCADE"), nullable=False, index=True),
-        sa.Column("verdict", sa.Enum("go_back", "iffy", "would_not_go_back", name="verdict_type", create_type=False), nullable=False),
+        sa.Column("verdict", sa.String(30), nullable=False),
         sa.Column("comment", sa.Text),
         sa.Column("is_public", sa.Boolean, nullable=False, server_default=sa.text("true")),
         sa.Column("visited_at", sa.Date),
@@ -173,7 +166,7 @@ def upgrade() -> None:
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
         sa.Column("user_id", postgresql.UUID(as_uuid=True), sa.ForeignKey("users.id", ondelete="CASCADE"), nullable=False, index=True),
         sa.Column("name", sa.String(200), nullable=False),
-        sa.Column("entity_type", sa.Enum("restaurant", "hotel", "mixed", name="list_entity_type", create_type=False), nullable=False, server_default=sa.text("'mixed'")),
+        sa.Column("entity_type", sa.String(20), nullable=False, server_default=sa.text("'mixed'")),
         sa.Column("description", sa.Text),
         sa.Column("is_public", sa.Boolean, nullable=False, server_default=sa.text("false")),
         sa.Column("created_at", sa.DateTime(timezone=True), server_default=sa.func.now()),
@@ -194,8 +187,8 @@ def upgrade() -> None:
         "scrape_jobs",
         sa.Column("id", postgresql.UUID(as_uuid=True), primary_key=True, server_default=sa.text("gen_random_uuid()")),
         sa.Column("source", sa.String(50), nullable=False),
-        sa.Column("entity_type", sa.Enum("restaurant", "hotel", name="entity_type", create_type=False), nullable=False),
-        sa.Column("status", sa.Enum("pending", "running", "done", "failed", name="scrape_status", create_type=False), nullable=False, server_default=sa.text("'pending'")),
+        sa.Column("entity_type", sa.String(20), nullable=False),
+        sa.Column("status", sa.String(20), nullable=False, server_default=sa.text("'pending'")),
         sa.Column("started_at", sa.DateTime(timezone=True)),
         sa.Column("finished_at", sa.DateTime(timezone=True)),
         sa.Column("items_found", sa.Integer, server_default=sa.text("0")),
