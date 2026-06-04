@@ -5,7 +5,7 @@ from __future__ import annotations
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
-from sqlalchemy import select
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
@@ -216,7 +216,14 @@ async def add_venue_to_list(
     db: AsyncSession = Depends(get_db),
 ):
     _check_owner(user_id, current_user)
-    item = CustomListItem(list_id=list_id, venue_id=venue_id)
+    next_position = (
+        await db.execute(
+            select(func.coalesce(func.max(CustomListItem.position) + 1, 0)).where(
+                CustomListItem.list_id == list_id
+            )
+        )
+    ).scalar() or 0
+    item = CustomListItem(list_id=list_id, venue_id=venue_id, position=next_position)
     db.add(item)
     await db.commit()
     return {"ok": True}

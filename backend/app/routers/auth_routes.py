@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import logging
+
 from fastapi import APIRouter, Depends, HTTPException, Request, status
-from jose import jwt
+from jose import JWTError, jwt
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -32,6 +34,8 @@ from app.schemas import (
 )
 
 router = APIRouter(prefix="/auth", tags=["auth"])
+
+logger = logging.getLogger(__name__)
 
 
 @router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
@@ -78,26 +82,32 @@ async def refresh(body: RefreshTokenRequest, db: AsyncSession = Depends(get_db))
     return RefreshTokenOut(access_token=access_token, refresh_token=new_refresh_token)
 
 
+@router.get("/me", response_model=UserOut)
+async def get_me(current_user: User = Depends(get_current_user)):
+    return current_user
+
+
+def _blacklist_token_from_request(request: Request) -> None:
+    import time
+
+    auth_header = request.headers.get("authorization", "")
+    token = auth_header.removeprefix("Bearer ") if auth_header.startswith("Bearer ") else ""
+    if token:
+        try:
+            payload = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
+            ttl = max(int(payload.get("exp", 0) - time.time()), 1)
+            blacklist_access_token(token, ttl)
+        except JWTError as exc:
+            logger.warning("Could not blacklist access token on logout: %s", exc)
+
+
 @router.post("/logout", status_code=status.HTTP_204_NO_CONTENT)
 async def logout(
     request: Request,
     body: LogoutRequest,
     current_user: User = Depends(get_current_user),
 ):
-    # Blacklist current access token
-    auth_header = request.headers.get("authorization", "")
-    token = auth_header.replace("Bearer ", "") if auth_header.startswith("Bearer ") else ""
-    if token:
-        try:
-            payload = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
-            import time
-
-            exp = payload.get("exp", 0)
-            ttl = max(int(exp - time.time()), 1)
-            blacklist_access_token(token, ttl)
-        except Exception:
-            pass
-
+    _blacklist_token_from_request(request)
     if body.refresh_token:
         revoke_refresh_token(body.refresh_token)
 
@@ -107,18 +117,5 @@ async def logout_all(
     request: Request,
     current_user: User = Depends(get_current_user),
 ):
-    # Blacklist current access token
-    auth_header = request.headers.get("authorization", "")
-    token = auth_header.replace("Bearer ", "") if auth_header.startswith("Bearer ") else ""
-    if token:
-        try:
-            payload = jwt.decode(token, settings.secret_key, algorithms=[settings.algorithm])
-            import time
-
-            exp = payload.get("exp", 0)
-            ttl = max(int(exp - time.time()), 1)
-            blacklist_access_token(token, ttl)
-        except Exception:
-            pass
-
+    _blacklist_token_from_request(request)
     revoke_all_user_tokens(str(current_user.id))

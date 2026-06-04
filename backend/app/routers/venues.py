@@ -5,6 +5,7 @@ from __future__ import annotations
 import uuid
 
 from fastapi import APIRouter, Depends, HTTPException, Query, status
+from geoalchemy2.shape import to_shape
 from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
@@ -30,6 +31,13 @@ router = APIRouter(tags=["venues"])
 
 
 def _venue_to_out(v: Venue, ranking: CityRanking | None = None) -> VenueOut:
+    lat, lng = None, None
+    if v.location is not None:
+        try:
+            point = to_shape(v.location)
+            lat, lng = point.y, point.x
+        except Exception:
+            pass
     return VenueOut(
         id=v.id,
         entity_type=v.entity_type,
@@ -37,8 +45,8 @@ def _venue_to_out(v: Venue, ranking: CityRanking | None = None) -> VenueOut:
         address=v.address,
         city=v.city,
         country=v.country,
-        lat=None,  # extract from PostGIS if needed
-        lng=None,
+        lat=lat,
+        lng=lng,
         tags=v.tags,
         price_level=v.price_level,
         cuisine_tags=v.cuisine_tags,
@@ -155,7 +163,7 @@ async def get_venue_summary(venue_id: uuid.UUID, db: AsyncSession = Depends(get_
     )
     summary = result.scalar_one_or_none()
     if not summary:
-        raise HTTPException(status_code=404, detail="Summary not found")
+        return VenueSummaryOut()
     return summary
 
 
