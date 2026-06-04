@@ -182,3 +182,27 @@ export function useCreateList() {
     },
   });
 }
+
+export function useUploadReviewPhoto(venueId: string) {
+  const queryClient = useQueryClient();
+  return useMutation({
+    mutationFn: async ({
+      reviewId,
+      localUri,
+      mimeType,
+      caption,
+    }: {
+      reviewId: string;
+      localUri: string;
+      mimeType?: string;
+      caption?: string;
+    }) => {
+      const objectKey = await api.uploadPhoto(localUri, mimeType ?? 'image/jpeg');
+      return api.attachReviewPhoto(venueId, reviewId, objectKey, caption);
+    },
+    onSuccess: (_data, { reviewId }) => {
+      queryClient.invalidateQueries({ queryKey: ['venue-reviews', venueId] });
+      queryClient.invalidateQueries({ queryKey: ['venue-summary', venueId] });
+    },
+  });
+}

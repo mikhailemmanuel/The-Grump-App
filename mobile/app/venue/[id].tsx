@@ -7,7 +7,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { Verdict } from '../../lib/types';
-import { useVenue, useVenueSummary, useVenueReviews, useVenueReservations, useSubmitReview, useToggleSaved, useToggleWantToGo } from '../../lib/hooks';
+import { useVenue, useVenueSummary, useVenueReviews, useVenueReservations, useSubmitReview, useToggleSaved, useToggleWantToGo, useUploadReviewPhoto } from '../../lib/hooks';
 import { useAuth } from '../../lib/auth';
 import ScoreBadge from '../../components/ScoreBadge';
 import VerdictButtons from '../../components/VerdictButtons';
@@ -22,6 +22,7 @@ export default function VenueDetailScreen() {
   const { data: reservations } = useVenueReservations(id!);
 
   const submitReview = useSubmitReview(id!);
+  const uploadReviewPhoto = useUploadReviewPhoto(id!);
   const toggleSaved = useToggleSaved();
   const toggleWantToGo = useToggleWantToGo();
 
@@ -30,6 +31,7 @@ export default function VenueDetailScreen() {
   const [showComment, setShowComment] = useState(false);
   const [bookmarked, setBookmarked] = useState(false);
   const [wantToGo, setWantToGo] = useState(false);
+  const [submittedReviewId, setSubmittedReviewId] = useState<string | undefined>();
 
   if (isLoading) {
     return (
@@ -65,7 +67,10 @@ export default function VenueDetailScreen() {
 
   const handleSubmitReview = () => {
     if (!verdict) return;
-    submitReview.mutate({ verdict, comment: comment || undefined });
+    submitReview.mutate(
+      { verdict, comment: comment || undefined },
+      { onSuccess: (review) => setSubmittedReviewId(review.id) },
+    );
   };
 
   const handleBookmark = () => {
@@ -85,9 +90,20 @@ export default function VenueDetailScreen() {
   };
 
   const pickImage = async () => {
-    await ImagePicker.launchImageLibraryAsync({
+    const permission = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!permission.granted) return;
+    const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
       quality: 0.8,
+    });
+    if (result.canceled || !result.assets.length) return;
+    const asset = result.assets[0];
+    const reviewId = submittedReviewId;
+    if (!reviewId) return;
+    uploadReviewPhoto.mutate({
+      reviewId,
+      localUri: asset.uri,
+      mimeType: asset.mimeType ?? 'image/jpeg',
     });
   };
 

@@ -94,6 +94,11 @@ class ReviewCreate(BaseModel):
     visited_at: date | None = None
 
 
+class PhotoAttach(BaseModel):
+    object_key: str
+    caption: str | None = Field(None, max_length=MAX_PHOTO_CAPTION_LENGTH)
+
+
 class ReviewOut(BaseModel):
     id: uuid.UUID
     user_id: uuid.UUID

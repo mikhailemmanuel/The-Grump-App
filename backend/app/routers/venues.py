@@ -12,13 +12,16 @@ from sqlalchemy.orm import selectinload
 
 from app.auth import get_current_user
 from app.database import get_db
-from app.models.user import User, UserReview
+from app.models.user import ReviewPhoto, User, UserReview
 from app.models.venue import CityRanking, Recommendation, ReservationLink, Venue, VenueSummary
+from app.services.photos import strip_exif, moderate_image
 from app.schemas import (
+    PhotoAttach,
     RecommendationOut,
     ReservationLinkOut,
     ReviewCreate,
     ReviewOut,
+    ReviewPhotoOut,
     VenueList,
     VenueOut,
     VenueSummaryOut,
@@ -208,3 +211,51 @@ async def create_venue_review(
     await db.commit()
     await db.refresh(review, attribute_names=["photos"])
     return review
+
+
+@router.post(
+    "/venues/{venue_id}/review/{review_id}/photos",
+    response_model=ReviewPhotoOut,
+    status_code=status.HTTP_201_CREATED,
+)
+async def attach_review_photo(
+    venue_id: uuid.UUID,
+    review_id: uuid.UUID,
+    body: PhotoAttach,
+    user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db),
+):
+    review = (
+        await db.execute(
+            select(UserReview).where(
+                UserReview.id == review_id,
+                UserReview.venue_id == venue_id,
+                UserReview.user_id == user.id,
+            )
+        )
+    ).scalar_one_or_none()
+    if not review:
+        raise HTTPException(status_code=404, detail="Review not found")
+
+    # Derive the public URL from the object key
+    from app.config import settings as _settings
+    if _settings.aws_cloudfront_domain:
+        image_url = f"https://{_settings.aws_cloudfront_domain}/{body.object_key}"
+    else:
+        image_url = f"https://{_settings.aws_s3_bucket}.s3.{_settings.aws_region}.amazonaws.com/{body.object_key}"
+
+    photo = ReviewPhoto(
+        review_id=review_id,
+        user_id=user.id,
+        image_url=image_url,
+        caption=body.caption,
+    )
+    db.add(photo)
+    await db.commit()
+    await db.refresh(photo)
+
+    # Fire-and-forget background tasks
+    strip_exif.delay(body.object_key)
+    moderate_image.delay(body.object_key)
+
+    return photo
