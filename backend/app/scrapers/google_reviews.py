@@ -9,7 +9,6 @@ from __future__ import annotations
 import logging
 from datetime import datetime, timedelta, timezone
 
-from sqlalchemy import and_, or_
 
 from app.celery_app import celery
 from app.db_sync import SyncSessionLocal

@@ -3,7 +3,7 @@
 import logging
 from datetime import datetime, timezone
 
-from sqlalchemy import distinct, func, select, delete
+from sqlalchemy import distinct, select, delete
 
 from app.celery_app import celery
 from app.db_sync import SyncSessionLocal

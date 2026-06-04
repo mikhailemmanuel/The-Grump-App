@@ -9,10 +9,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 from app.validation import (
-    MAX_COMMENT_LENGTH,
-    MAX_LIST_DESCRIPTION_LENGTH,
     MAX_PHOTO_CAPTION_LENGTH,
-    MAX_SEARCH_QUERY_LENGTH,
     validate_password_strength,
 )
 

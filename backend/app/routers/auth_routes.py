@@ -27,7 +27,6 @@ from app.schemas import (
     LogoutRequest,
     RefreshTokenOut,
     RefreshTokenRequest,
-    TokenOut,
     UserCreate,
     UserLogin,
     UserOut,
