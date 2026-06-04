@@ -6,23 +6,18 @@ import sys
 from datetime import datetime, timedelta, timezone
 from unittest.mock import MagicMock
 
-import pytest
-
 # db_sync creates a sync engine at import time (needs psycopg2).
 # Stub it out before scoring.py is imported.
 sys.modules.setdefault("app.db_sync", MagicMock())
 
-from app.scrapers.scoring import (
+from app.scrapers.scoring import (  # noqa: E402
     MICHELIN_AWARD_SCORES,
-    EATER_AWARD_SCORES,
-    CONDE_NAST_AWARD_SCORES,
-    VERDICT_SCORES,
     _recency_factor,
     _best_award_score,
     _source_score_from_rec,
     compute_venue_score,
 )
-from app.models.venue import Recommendation
+from app.models.venue import Recommendation  # noqa: E402
 
 
 def _rec(source: str, rating: float | None = None, awards: list[str] | None = None, days_old: int = 30) -> Recommendation:
