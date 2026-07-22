@@ -25,3 +25,5 @@ export const API_BASE_URL: string =
  */
 export const USE_LOCAL_DATA: boolean =
   expoConfig?.extra?.useLocalData ?? true;
+
+// build: web deploy
