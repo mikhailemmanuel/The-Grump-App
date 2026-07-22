@@ -24,9 +24,9 @@ npx expo export -p web        # outputs static site to mobile/dist/
 
 Pushing to the deploy branch auto-publishes to **GitHub Pages** via
 `.github/workflows/deploy-web.yml`. One-time setup: repo **Settings → Pages → Source →
-GitHub Actions**. The app is then live at `https://<user>.github.io/the-grump-app/`.
+GitHub Actions**. The app is then live at `https://<user>.github.io/The-Grump-App/`.
 
-> The Pages base path is set in `mobile/app.json` (`experiments.baseUrl: "/the-grump-app"`).
+> The Pages base path is set in `mobile/app.json` (`experiments.baseUrl: "/The-Grump-App"`).
 > If you rename the repo or use a custom domain, update that value to match.
 
 ### Regenerating the curated dataset
