@@ -1,0 +1,933 @@
+[
+  {
+    "name": "Jay Fai",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Phra Nakhon",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Street Food", "Seafood"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 13.7534,
+    "lng": 100.5061,
+    "address": "327 Maha Chai Rd, Samran Rat, Phra Nakhon, Bangkok",
+    "blurb": "Goggle-wearing street legend wok-frying famous crab omelettes over charcoal; Michelin-starred street food.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "google": { "rating": 4.3 },
+      "reddit": { "rating": 8.7, "snippet": "The crab omelette is worth the wait and the price." }
+    }
+  },
+  {
+    "name": "Gaggan Anand",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Lumphini",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Progressive Indian", "Fine Dining", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 13.7248,
+    "lng": 100.5412,
+    "address": "68/4 Soi Langsuan, Lumphini, Pathum Wan, Bangkok",
+    "blurb": "Theatrical emoji-menu progressive Indian tasting from one of Asia's most acclaimed chefs.",
+    "sources": {
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 9.1, "snippet": "A genuinely unforgettable, wild multi-course experience." }
+    }
+  },
+  {
+    "name": "Sorn",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Sukhumvit",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Southern Thai", "Fine Dining", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 13.7286,
+    "lng": 100.5842,
+    "address": "56 Sukhumvit 26, Khlong Tan, Khlong Toei, Bangkok",
+    "blurb": "The world's first three-Michelin-star Southern Thai restaurant, celebrating heritage ingredients.",
+    "sources": {
+      "michelin": { "award": "3_stars" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.0, "snippet": "Deep, fiery southern flavors executed flawlessly." }
+    }
+  },
+  {
+    "name": "Le Du",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Silom",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern Thai", "Fine Dining", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 13.7248,
+    "lng": 100.5326,
+    "address": "399/3 Silom Soi 7, Silom, Bang Rak, Bangkok",
+    "blurb": "Chef Ton's modern Thai tasting menu; a former No. 1 on Asia's 50 Best.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "Refined Thai flavors with top seasonal produce." }
+    }
+  },
+  {
+    "name": "Nahm",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Sathorn",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 13.7229,
+    "lng": 100.5382,
+    "address": "27 South Sathorn Rd, Tungmahamek, Sathorn, Bangkok",
+    "blurb": "Landmark refined Thai cooking rooted in old recipes, inside the COMO Metropolitan.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.4, "snippet": "Bold, authentic Thai flavors in an elegant setting." }
+    }
+  },
+  {
+    "name": "Thipsamai Pad Thai",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Phra Nakhon",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Street Food", "Pad Thai"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 13.7527,
+    "lng": 100.5075,
+    "address": "313-315 Maha Chai Rd, Samran Rat, Phra Nakhon, Bangkok",
+    "blurb": "Iconic since 1966; egg-wrapped pad thai that draws nightly queues.",
+    "sources": {
+      "michelin": { "award": "bib_gourmand" },
+      "google": { "rating": 4.2 },
+      "reddit": { "rating": 8.3, "snippet": "The original egg-wrapped pad thai is a must-do." }
+    }
+  },
+  {
+    "name": "Krua Apsorn",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Dusit",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Home-style"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 13.7645,
+    "lng": 100.5148,
+    "address": "503-505 Samsen Rd, Dusit, Bangkok",
+    "blurb": "Beloved family restaurant famed for stir-fried crab with yellow chilli and fluffy crab omelette.",
+    "sources": {
+      "michelin": { "award": "bib_gourmand" },
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.5, "snippet": "The crab and yellow chili dish is legendary." }
+    }
+  },
+  {
+    "name": "Raan Jay Fai",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Chinatown",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai-Chinese", "Noodles", "Street Food"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 13.7405,
+    "lng": 100.5106,
+    "address": "Yaowarat Rd, Samphanthawong, Bangkok",
+    "blurb": "Yaowarat street-noodle staple in Bangkok's buzzing Chinatown food scene.",
+    "sources": {
+      "google": { "rating": 4.3 },
+      "reddit": { "rating": 8.0, "snippet": "Classic Chinatown noodles done right and cheap." }
+    }
+  },
+  {
+    "name": "Bo.lan",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Sukhumvit",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Fine Dining", "Sustainable"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 13.7186,
+    "lng": 100.5895,
+    "address": "24 Sukhumvit 53, Khlong Tan Nuea, Watthana, Bangkok",
+    "blurb": "Slow-food, sustainability-minded restaurant reviving complex traditional Thai recipes.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.2, "snippet": "Authentic old-recipe Thai with a green ethos." }
+    }
+  },
+  {
+    "name": "Err Urban Rustic Thai",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Phra Nakhon",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Street Food", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 13.7438,
+    "lng": 100.4917,
+    "address": "394/35 Maha Rat Rd, Phra Borom Maha Ratchawang, Bangkok",
+    "blurb": "Playful rustic Thai snacks, grilled bites and craft drinks near Wat Pho.",
+    "sources": {
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.1, "snippet": "Great fun small plates and cocktails from the Bo.lan team." }
+    }
+  },
+  {
+    "name": "Sühring",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Sathorn",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["German", "Fine Dining", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 13.7086,
+    "lng": 100.5312,
+    "address": "10 Yen Akat Soi 3, Chong Nonsi, Yan Nawa, Bangkok",
+    "blurb": "Twin brothers reinterpret modern German cuisine in a serene garden villa.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.7, "snippet": "Surprisingly brilliant German fine dining in Bangkok." }
+    }
+  },
+  {
+    "name": "Mandarin Oriental Bangkok",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Bang Rak",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Mandarin Oriental",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 13.7239,
+    "lng": 100.5142,
+    "address": "48 Oriental Ave, Bang Rak, Bangkok",
+    "blurb": "Storied riverside grande dame on the Chao Phraya, a benchmark of Asian hospitality since 1876.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.2, "snippet": "Legendary service; the riverside setting is magical." }
+    }
+  },
+  {
+    "name": "The Peninsula Bangkok",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Khlong San",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Peninsula",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 13.7217,
+    "lng": 100.5099,
+    "address": "333 Charoennakorn Rd, Khlong San, Bangkok",
+    "blurb": "W-shaped riverside tower with sweeping city views and impeccable service.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "michelin": { "award": "1_key" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.0, "snippet": "Amazing river views and the pool is stunning." }
+    }
+  },
+  {
+    "name": "The Siam",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Dusit",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 13.7862,
+    "lng": 100.5122,
+    "address": "3/2 Thanon Khao, Vachirapayabal, Dusit, Bangkok",
+    "blurb": "Art-deco riverside urban resort with private pool villas and a serene, all-suite feel.",
+    "sources": {
+      "conde_nast": { "award": "cn_hot_list" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.8 },
+      "reddit": { "rating": 9.1, "snippet": "Intimate, gorgeous design and away from the crowds." }
+    }
+  },
+  {
+    "name": "The Sukhothai Bangkok",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Sathorn",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 13.7215,
+    "lng": 100.5407,
+    "address": "13/3 South Sathorn Rd, Thungmahamek, Sathorn, Bangkok",
+    "blurb": "Tranquil lily-pond gardens and pavilions in the heart of the business district.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "An oasis of calm; beautiful courtyards and pools." }
+    }
+  },
+  {
+    "name": "Rosewood Bangkok",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Ploenchit",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Rosewood",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 13.7434,
+    "lng": 100.5479,
+    "address": "1041/38 Ploenchit Rd, Lumphini, Pathum Wan, Bangkok",
+    "blurb": "Striking wai-inspired tower with a rooftop bar and polished contemporary luxury.",
+    "sources": {
+      "conde_nast": { "award": "cn_hot_list" },
+      "michelin": { "award": "1_key" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.9, "snippet": "Chic design and excellent service in a great location." }
+    }
+  },
+  {
+    "name": "137 Pillars Suites & Residences Bangkok",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "neighborhood": "Sukhumvit",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "137 Pillars",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 13.7351,
+    "lng": 100.5721,
+    "address": "59/1 Soi Sukhumvit 39, Klongton-Nua, Watthana, Bangkok",
+    "blurb": "All-suite boutique tower with rooftop infinity pool and colonial-era charm.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.7, "snippet": "Spacious suites and a fantastic rooftop pool." }
+    }
+  },
+  {
+    "name": "Sukiyabashi Jiro",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Ginza",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Sushi", "Fine Dining", "Omakase"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6717,
+    "lng": 139.7640,
+    "address": "Tsukamoto Sogyo Building B1F, 2-15 Ginza 4-chome, Chuo, Tokyo",
+    "blurb": "Jiro Ono's legendary counter, the sushi temple made famous worldwide.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.9, "snippet": "Impossible reservation but a bucket-list sushi experience." }
+    }
+  },
+  {
+    "name": "Sushi Saito",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Roppongi",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Sushi", "Omakase", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6647,
+    "lng": 139.7378,
+    "address": "1-4-5 Roppongi, Minato, Tokyo",
+    "blurb": "Widely hailed as Tokyo's finest sushi; a nearly unobtainable counter of eight seats.",
+    "sources": {
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.3, "snippet": "Consistently called the best sushi in the world." }
+    }
+  },
+  {
+    "name": "Den",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Jingumae",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern Japanese", "Kaiseki", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6716,
+    "lng": 139.7104,
+    "address": "2-3-18 Jingumae, Shibuya, Tokyo",
+    "blurb": "Playful, joyful modern kaiseki from chef Zaiyu Hasegawa; a former Asia's No. 1.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 9.1, "snippet": "Serious food with a huge sense of fun; the Dentucky chicken is iconic." }
+    }
+  },
+  {
+    "name": "Narisawa",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Minami-Aoyama",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Innovative", "Fine Dining", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6672,
+    "lng": 139.7196,
+    "address": "2-6-15 Minami-Aoyama, Minato, Tokyo",
+    "blurb": "Nature-driven 'satoyama' cuisine celebrating Japan's forests and seasons.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.8, "snippet": "The bread that rises at the table is unforgettable." }
+    }
+  },
+  {
+    "name": "Florilège",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Jingumae",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["French", "Fine Dining", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6690,
+    "lng": 139.7085,
+    "address": "2-5-4 Jingumae, Shibuya, Tokyo",
+    "blurb": "Counter-style French with a sustainability ethos from chef Hiroyasu Kawate.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.9, "snippet": "Inventive French-Japanese menus and a great beef course." }
+    }
+  },
+  {
+    "name": "Ichiran Shibuya",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Shibuya",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Ramen", "Tonkotsu", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 35.6595,
+    "lng": 139.7005,
+    "address": "1-22-7 Jinnan, Shibuya, Tokyo",
+    "blurb": "Solo-booth tonkotsu ramen chain famous for its customizable, rich pork broth.",
+    "sources": {
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.0, "snippet": "Touristy but genuinely good tonkotsu, and the booths are fun." }
+    }
+  },
+  {
+    "name": "Afuri Ebisu",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Ebisu",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Ramen", "Yuzu Shio", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 35.6467,
+    "lng": 139.7101,
+    "address": "1-1-7 Ebisu, Shibuya, Tokyo",
+    "blurb": "Light, citrusy yuzu-shio ramen that pioneered a cleaner style.",
+    "sources": {
+      "google": { "rating": 4.3 },
+      "reddit": { "rating": 8.2, "snippet": "The yuzu shio ramen is refreshing and unique." }
+    }
+  },
+  {
+    "name": "Tsuta",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Sugamo",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Ramen", "Shoyu", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 35.7335,
+    "lng": 139.7392,
+    "address": "1-14-1 Sugamo, Toshima, Tokyo",
+    "blurb": "The first ramen shop to earn a Michelin star, famed for truffle-scented shoyu.",
+    "sources": {
+      "michelin": { "award": "bib_gourmand" },
+      "google": { "rating": 4.2 },
+      "reddit": { "rating": 8.1, "snippet": "The truffle shoyu ramen lives up to the hype." }
+    }
+  },
+  {
+    "name": "Tempura Kondo",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Ginza",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Tempura", "Fine Dining", "Omakase"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6716,
+    "lng": 139.7648,
+    "address": "Sakaguchi Building 9F, 5-5-13 Ginza, Chuo, Tokyo",
+    "blurb": "Master Fumio Kondo's delicate vegetable-forward tempura counter.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.7, "snippet": "The vegetable tempura, especially the carrot, is astonishing." }
+    }
+  },
+  {
+    "name": "Toriki",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Musashi-Koyama",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Yakitori", "Izakaya", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 35.6120,
+    "lng": 139.7028,
+    "address": "3-8-2 Koyama, Shinagawa, Tokyo",
+    "blurb": "Neighborhood yakitori favorite grilling every part of the bird over charcoal.",
+    "sources": {
+      "michelin": { "award": "bib_gourmand" },
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.4, "snippet": "Fantastic value chicken skewers loved by locals." }
+    }
+  },
+  {
+    "name": "Kagari Ginza",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Ginza",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Ramen", "Tori Paitan", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 35.6720,
+    "lng": 139.7660,
+    "address": "4-4-1 Ginza, Chuo, Tokyo",
+    "blurb": "Creamy chicken tori-paitan ramen that draws long lines in a Ginza alley.",
+    "sources": {
+      "google": { "rating": 4.3 },
+      "reddit": { "rating": 8.5, "snippet": "The chicken broth is silky and rich; worth the queue." }
+    }
+  },
+  {
+    "name": "Ginza Kojyu",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Ginza",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Kaiseki", "Fine Dining", "Japanese"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6712,
+    "lng": 139.7635,
+    "address": "Corridor Building 4F, 6-2-8 Ginza, Chuo, Tokyo",
+    "blurb": "Exquisite seasonal kaiseki with pristine ingredients and quiet refinement.",
+    "sources": {
+      "michelin": { "award": "3_stars" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "Beautiful, precise kaiseki; a serene splurge." }
+    }
+  },
+  {
+    "name": "Ukai-tei Ginza",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Ginza",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Teppanyaki", "Fine Dining", "Wagyu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 35.6721,
+    "lng": 139.7649,
+    "address": "Ginza Yamato Building 5F, 5-15-8 Ginza, Chuo, Tokyo",
+    "blurb": "Art-nouveau teppanyaki room searing top-grade wagyu tableside.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.6, "snippet": "Gorgeous room and superb wagyu teppanyaki." }
+    }
+  },
+  {
+    "name": "Aman Tokyo",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Otemachi",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Aman",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 35.6873,
+    "lng": 139.7660,
+    "address": "The Otemachi Tower, 1-5-6 Otemachi, Chiyoda, Tokyo",
+    "blurb": "Serene sky-high urban retreat with a soaring washi-and-stone lobby above the city.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "michelin": { "award": "3_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.3, "snippet": "The most tranquil luxury in Tokyo; breathtaking spa and views." }
+    }
+  },
+  {
+    "name": "The Peninsula Tokyo",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Marunouchi",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Peninsula",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 35.6742,
+    "lng": 139.7615,
+    "address": "1-8-1 Yurakucho, Chiyoda, Tokyo",
+    "blurb": "Grand address overlooking the Imperial Palace gardens and Hibiya Park.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.0, "snippet": "Impeccable service and a stellar location by the palace." }
+    }
+  },
+  {
+    "name": "Park Hyatt Tokyo",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Shinjuku",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Park Hyatt",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 35.6855,
+    "lng": 139.6905,
+    "address": "3-7-1-2 Nishi-Shinjuku, Shinjuku, Tokyo",
+    "blurb": "The 'Lost in Translation' icon with the New York Bar high above Shinjuku.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 9.0, "snippet": "Timeless views and the New York Bar are unmissable." }
+    }
+  },
+  {
+    "name": "Hoshinoya Tokyo",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Otemachi",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Hoshinoya",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 35.6869,
+    "lng": 139.7672,
+    "address": "1-9-1 Otemachi, Chiyoda, Tokyo",
+    "blurb": "A modern ryokan-tower in the city with tatami rooms and a rooftop onsen.",
+    "sources": {
+      "conde_nast": { "award": "cn_hot_list" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.9, "snippet": "A true ryokan experience with an onsen in the middle of Tokyo." }
+    }
+  },
+  {
+    "name": "The Tokyo Station Hotel",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Marunouchi",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 35.6810,
+    "lng": 139.7669,
+    "address": "1-9-1 Marunouchi, Chiyoda, Tokyo",
+    "blurb": "European-style heritage hotel inside the restored red-brick Tokyo Station.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "Charming classic rooms right inside the historic station." }
+    }
+  },
+  {
+    "name": "Mandarin Oriental Tokyo",
+    "city": "Tokyo",
+    "country": "Japan",
+    "neighborhood": "Nihonbashi",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Mandarin Oriental",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 35.6862,
+    "lng": 139.7736,
+    "address": "2-1-1 Nihonbashi Muromachi, Chuo, Tokyo",
+    "blurb": "Sky-lobby luxury above Nihonbashi with panoramic views and top-tier dining.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.0, "snippet": "Stunning views, exceptional service and Michelin dining on site." }
+    }
+  },
+  {
+    "name": "Rata",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Town Centre",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern NZ", "Fine Dining", "Local Produce"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": -45.0327,
+    "lng": 168.6607,
+    "address": "43 Ballarat St, Queenstown",
+    "blurb": "Michelin-starred chef Josh Emett's flagship celebrating South Island produce.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.6, "snippet": "The best fine dining in Queenstown; superb local ingredients." }
+    }
+  },
+  {
+    "name": "Fergburger",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Town Centre",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Burgers", "Casual", "Late Night"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": -45.0316,
+    "lng": 168.6601,
+    "address": "42 Shotover St, Queenstown",
+    "blurb": "The world-famous burger joint with queues out the door day and night.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.7, "snippet": "Massive, delicious burgers; a Queenstown rite of passage." }
+    }
+  },
+  {
+    "name": "Amisfield Bistro & Cellar Door",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Lake Hayes",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern NZ", "Winery", "Tasting Menu"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": -44.9862,
+    "lng": 168.8028,
+    "address": "10 Lake Hayes Rd, RD1, Queenstown",
+    "blurb": "Acclaimed winery restaurant serving a surprise 'trust the kitchen' set menu with estate wines.",
+    "sources": {
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.9, "snippet": "One of NZ's best dining experiences; the tasting menu is superb." }
+    }
+  },
+  {
+    "name": "Botswana Butchery",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Town Centre",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Steakhouse", "Fine Dining", "Lakeside"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": -45.0343,
+    "lng": 168.6621,
+    "address": "17 Marine Parade, Queenstown",
+    "blurb": "Upscale lakeside steak-and-game restaurant with an extensive wine list.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.3, "snippet": "Great steaks and a lovely lakefront setting." }
+    }
+  },
+  {
+    "name": "The Bunker",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Town Centre",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern NZ", "Fine Dining", "Intimate"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": -45.0320,
+    "lng": 168.6612,
+    "address": "14 Cow Lane, Queenstown",
+    "blurb": "Hidden, cozy fine-dining hideaway up a laneway with a beloved fireside bar.",
+    "sources": {
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.5, "snippet": "Romantic, tucked-away spot with excellent food and cocktails." }
+    }
+  },
+  {
+    "name": "Fergbaker",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Town Centre",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Bakery", "Pies", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": -45.0314,
+    "lng": 168.6600,
+    "address": "40 Shotover St, Queenstown",
+    "blurb": "Sister bakery to Fergburger famed for its pies, pastries and late-night sweets.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.4, "snippet": "The pies and pastries are a must after a night out." }
+    }
+  },
+  {
+    "name": "Sherwood",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Frankton Road",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern NZ", "Farm-to-Table", "Casual"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": -45.0272,
+    "lng": 168.6812,
+    "address": "554 Frankton Rd, Queenstown",
+    "blurb": "Sustainable garden-driven kitchen with lake views at an eco-minded lodge.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.2, "snippet": "Fresh, seasonal food and a great vibe overlooking the lake." }
+    }
+  },
+  {
+    "name": "Eichardt's Private Hotel",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Town Centre",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": -45.0333,
+    "lng": 168.6615,
+    "address": "2 Marine Parade, Queenstown",
+    "blurb": "Historic lakefront boutique hotel with plush suites right on the waterfront.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.8, "snippet": "Gorgeous suites in the perfect central lakefront spot." }
+    }
+  },
+  {
+    "name": "Matakauri Lodge",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Glenorchy Road",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": -45.0450,
+    "lng": 168.6115,
+    "address": "569 Glenorchy Rd, Queenstown",
+    "blurb": "Robertson-family luxury lodge with panoramic views over Lake Wakatipu and The Remarkables.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "google": { "rating": 4.8 },
+      "reddit": { "rating": 9.1, "snippet": "Jaw-dropping views and flawless all-inclusive luxury." }
+    }
+  },
+  {
+    "name": "The Rees Hotel",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Frankton Road",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 3,
+    "lat": -45.0248,
+    "lng": 168.6905,
+    "address": "377 Frankton Rd, Queenstown",
+    "blurb": "Lakeside apartments and suites with a well-regarded restaurant and wine cellar.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.5, "snippet": "Spacious lake-view rooms and excellent service." }
+    }
+  },
+  {
+    "name": "Kamana Lakehouse",
+    "city": "Queenstown",
+    "country": "New Zealand",
+    "neighborhood": "Fernhill",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": -45.0378,
+    "lng": 168.6402,
+    "address": "1 Kohia Pl, Fernhill, Queenstown",
+    "blurb": "Elevated boutique hotel with sweeping lake and mountain vistas above town.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.3, "snippet": "The views from the restaurant and rooms are spectacular." }
+    }
+  }
+]

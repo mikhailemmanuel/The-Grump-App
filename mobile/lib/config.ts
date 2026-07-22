@@ -14,3 +14,14 @@ const PROD_URL = 'https://api.foodgrump.com';
 export const API_BASE_URL: string =
   expoConfig?.extra?.apiBaseUrl ??
   (typeof __DEV__ !== 'undefined' && __DEV__ ? DEV_URL : PROD_URL);
+
+/**
+ * When true, the app runs fully offline against the bundled curated dataset
+ * (lib/seed.json) — no backend, database, or API keys required. This is the
+ * mode used for the shareable web build.
+ *
+ * Set to false to talk to a live FoodGrump backend at API_BASE_URL instead
+ * (real accounts, community reviews, photo uploads, live scraped data).
+ */
+export const USE_LOCAL_DATA: boolean =
+  expoConfig?.extra?.useLocalData ?? true;

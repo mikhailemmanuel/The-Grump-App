@@ -143,7 +143,7 @@ def test_multi_source_bonus_applied():
     ]
     session = _session(recs=recs, verdicts=["go_back"])
     score, _ = compute_venue_score(session, _venue(), "restaurant")
-    # With 5 sources (foodgrump + 4 recs), bonus = min((5-2)*5, 15) = 15
+    # With 5 sources (foodgrump + 4 recs), bonus = min((5-2)*2, 8) = 6
     assert score > 0
 
 

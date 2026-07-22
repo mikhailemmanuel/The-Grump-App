@@ -1,10 +1,10 @@
 import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { MMKV } from 'react-native-mmkv';
 import type { UserOut, RefreshTokenOut } from './types';
+import { createStore } from './storage';
 
-// ── MMKV Storage ────────────────────────────────────────────────────────────
+// ── Storage (web-safe: MMKV on native, localStorage on web) ─────────────────
 
-const storage = new MMKV({ id: 'auth' });
+const storage = createStore('auth');
 
 const KEYS = {
   ACCESS_TOKEN: 'access_token',

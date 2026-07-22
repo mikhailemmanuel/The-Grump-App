@@ -149,8 +149,11 @@ def compute_venue_score(session, venue: Venue, entity_type: str) -> tuple[float,
         weighted_sum = 0.0
 
     # ── Source count bonus ───────────────────────────────────────────
+    # Reward venues corroborated by many sources, but gently — a larger bonus
+    # saturates already-high weighted averages so top venues all pin at 100
+    # and rankings lose their spread.
     nonzero_count = sum(1 for s in weights if source_scores.get(s, 0) > 0)
-    bonus = min((max(nonzero_count - 2, 0)) * 5, 15)
+    bonus = min((max(nonzero_count - 2, 0)) * 2, 8)
 
     composite = min(max(weighted_sum + bonus, 0.0), 100.0)
 
