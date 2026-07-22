@@ -12,7 +12,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#FAFAFA"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "web": {
       "bundler": "metro",
       "output": "static",
@@ -29,10 +31,12 @@
       },
       "package": "com.foodgrump.app"
     },
-    "plugins": ["expo-router"],
+    "plugins": [
+      "expo-router"
+    ],
     "experiments": {
       "typedRoutes": true,
-      "baseUrl": "/the-grump-app"
+      "baseUrl": "/The-Grump-App"
     }
   }
 }
