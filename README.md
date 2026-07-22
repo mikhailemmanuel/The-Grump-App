@@ -2,11 +2,50 @@
 
 > Discover the best restaurants and hotels, ranked by an intelligent combination of Michelin Guide, The Infatuation, Eater, Beli, Condé Nast Traveler, Google Reviews, and Reddit sentiment.
 
+## Two ways to run
+
+FoodGrump can run in **two modes**, controlled by `USE_LOCAL_DATA` in `mobile/lib/config.ts`:
+
+1. **Offline / shareable (default).** The app ships with a curated dataset of ~180 top
+   restaurants & hotels across 11 travel cities (`mobile/lib/seed.json`), with composite
+   scores computed by the real weighting model. No backend, database, or API keys needed —
+   just build the web app and share a URL. This is the mode used for the GitHub Pages
+   deploy. Want-to-go / saved / your verdicts persist on the device.
+2. **Live backend.** Set `USE_LOCAL_DATA = false` to point the app at a running FoodGrump
+   API (accounts, community reviews, photo uploads, and live scraped data).
+
+### Share it as a web link (offline mode)
+
+```bash
+cd mobile
+npm install --legacy-peer-deps
+npx expo export -p web        # outputs static site to mobile/dist/
+```
+
+Pushing to the deploy branch auto-publishes to **GitHub Pages** via
+`.github/workflows/deploy-web.yml`. One-time setup: repo **Settings → Pages → Source →
+GitHub Actions**. The app is then live at `https://<user>.github.io/the-grump-app/`.
+
+> The Pages base path is set in `mobile/app.json` (`experiments.baseUrl: "/the-grump-app"`).
+> If you rename the repo or use a custom domain, update that value to match.
+
+### Regenerating the curated dataset
+
+The bundled dataset is produced from editorial source files by a script that ports the
+backend's exact scoring model:
+
+```bash
+cd mobile
+node scripts/generate-seed.mjs <group1.json> [group2.json ...]   # → lib/seed.json
+```
+
 ## Architecture
 
 ```
 backend/          Python FastAPI + SQLAlchemy + Celery
 mobile/           React Native (Expo) mobile app
+mobile/lib/seed.json          curated offline dataset (scored)
+mobile/scripts/generate-seed.mjs   dataset generator (mirrors backend scoring)
 ```
 
 ## Backend Setup

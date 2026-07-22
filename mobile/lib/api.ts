@@ -225,3 +225,37 @@ export const updateUserSettings = (userId: string, settings: { reviews_public: b
     method: 'PUT',
     body: JSON.stringify(settings),
   });
+
+// ── Photo upload ─────────────────────────────────────────────────────────────
+
+export interface PresignedUrlResponse {
+  upload_url: string;
+  object_key: string;
+}
+
+export const getPresignedUrl = (content_type: string) =>
+  apiFetch<PresignedUrlResponse>(`/uploads/presigned-url?content_type=${encodeURIComponent(content_type)}`);
+
+/** Upload a local file URI to S3 via a pre-signed PUT URL. Returns the object_key. */
+export async function uploadPhoto(localUri: string, mimeType: string = 'image/jpeg'): Promise<string> {
+  const { upload_url, object_key } = await getPresignedUrl(mimeType);
+  const blob = await fetch(localUri).then((r) => r.blob());
+  const res = await fetch(upload_url, {
+    method: 'PUT',
+    headers: { 'Content-Type': mimeType },
+    body: blob,
+  });
+  if (!res.ok) throw new Error(`S3 upload failed: ${res.status}`);
+  return object_key;
+}
+
+export const attachReviewPhoto = (
+  venueId: string,
+  reviewId: string,
+  object_key: string,
+  caption?: string,
+) =>
+  apiFetch<import('./types').ReviewPhotoOut>(
+    `/venues/${venueId}/review/${reviewId}/photos`,
+    { method: 'POST', body: JSON.stringify({ object_key, caption }) },
+  );

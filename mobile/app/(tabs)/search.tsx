@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, FlatList, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { EntityType } from '../../lib/types';
-import { useSearch } from '../../lib/hooks';
+import { useSearch, useCities } from '../../lib/hooks';
 import VenueCard from '../../components/VenueCard';
 
-const RECENT_SEARCHES = ['Le Bernardin', 'Thai food LES', 'rooftop hotel'];
-const TRENDING = ['Tatiana', 'Dhamaka', 'Aman New York', 'Don Angie'];
+const CUISINES = ['Sushi', 'BBQ', 'Italian', 'Ramen', 'Seafood', 'Steakhouse', 'Tacos', 'French'];
 
 export default function SearchScreen() {
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState('');
   const [filter, setFilter] = useState<EntityType | 'all'>('all');
+  const { data: cities } = useCities();
 
   useEffect(() => {
     const timer = setTimeout(() => setDebouncedQuery(query.trim()), 300);
@@ -79,23 +79,27 @@ export default function SearchScreen() {
         )
       ) : (
         <View style={styles.suggestions}>
-          {/* Recent searches */}
-          <Text style={styles.sectionTitle}>Recent Searches</Text>
-          {RECENT_SEARCHES.map((s) => (
-            <TouchableOpacity key={s} style={styles.suggestionRow} onPress={() => setQuery(s)}>
-              <Ionicons name="time-outline" size={16} color="#9CA3AF" />
-              <Text style={styles.suggestionText}>{s}</Text>
-            </TouchableOpacity>
-          ))}
+          {/* Browse by city */}
+          <Text style={styles.sectionTitle}>Browse by City</Text>
+          <View style={styles.chipWrap}>
+            {(cities ?? []).map((c) => (
+              <TouchableOpacity key={c} style={styles.chip} onPress={() => setQuery(c)}>
+                <Ionicons name="location-outline" size={14} color="#1A6B5A" />
+                <Text style={styles.chipText}>{c}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
 
-          {/* Trending */}
-          <Text style={[styles.sectionTitle, { marginTop: 24 }]}>Trending</Text>
-          {TRENDING.map((s) => (
-            <TouchableOpacity key={s} style={styles.suggestionRow} onPress={() => setQuery(s)}>
-              <Ionicons name="trending-up" size={16} color="#1A6B5A" />
-              <Text style={styles.suggestionText}>{s}</Text>
-            </TouchableOpacity>
-          ))}
+          {/* Browse by cuisine */}
+          <Text style={[styles.sectionTitle, { marginTop: 24 }]}>Popular Cuisines</Text>
+          <View style={styles.chipWrap}>
+            {CUISINES.map((s) => (
+              <TouchableOpacity key={s} style={styles.chip} onPress={() => setQuery(s)}>
+                <Ionicons name="restaurant-outline" size={14} color="#1A6B5A" />
+                <Text style={styles.chipText}>{s}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
         </View>
       )}
     </View>
@@ -172,16 +176,25 @@ const styles = StyleSheet.create({
     textTransform: 'uppercase',
     letterSpacing: 0.5,
   },
-  suggestionRow: {
+  chipWrap: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+  },
+  chip: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 10,
-    paddingVertical: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: '#F3F4F6',
+    gap: 5,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 20,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#E5E7EB',
   },
-  suggestionText: {
-    fontSize: 15,
+  chipText: {
+    fontSize: 14,
     color: '#1A1A2E',
+    fontWeight: '500',
   },
 });

@@ -1,0 +1,1645 @@
+[
+  {
+    "name": "Alinea",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Lincoln Park",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Modern American",
+      "Molecular",
+      "Fine Dining"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.9134,
+    "lng": -87.6486,
+    "address": "1723 N Halsted St, Chicago, IL",
+    "blurb": "Grant Achatz's avant-garde tasting-menu temple; the definitive Chicago fine-dining experience.",
+    "sources": {
+      "michelin": {
+        "award": "3_stars"
+      },
+      "infatuation": {
+        "rating": 9.5
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9.2,
+        "snippet": "Once-in-a-lifetime meal, theatrical and delicious."
+      }
+    }
+  },
+  {
+    "name": "Smyth",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "West Loop",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Contemporary",
+      "American",
+      "Fine Dining"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.8859,
+    "lng": -87.6497,
+    "address": "177 N Ada St, Chicago, IL",
+    "blurb": "Farm-driven tasting menu from a husband-and-wife team; among the city's most exciting rooms.",
+    "sources": {
+      "michelin": {
+        "award": "3_stars"
+      },
+      "infatuation": {
+        "rating": 9.3
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Underrated compared to Alinea but arguably more soulful."
+      }
+    }
+  },
+  {
+    "name": "Oriole",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "West Loop",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Contemporary",
+      "American",
+      "Fine Dining"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.8858,
+    "lng": -87.6479,
+    "address": "661 W Walnut St, Chicago, IL",
+    "blurb": "Hidden loading-dock entrance leads to a refined, personable two-star tasting menu.",
+    "sources": {
+      "michelin": {
+        "award": "2_stars"
+      },
+      "infatuation": {
+        "rating": 9.1
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 8.8,
+        "snippet": "Intimate service and gorgeous plates."
+      }
+    }
+  },
+  {
+    "name": "Girl & the Goat",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "West Loop",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Small Plates"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.8847,
+    "lng": -87.6486,
+    "address": "809 W Randolph St, Chicago, IL",
+    "blurb": "Stephanie Izard's boisterous Randolph Street flagship of bold, shareable small plates.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.9
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.7
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Book way ahead; the goat and bread service are legendary."
+      }
+    }
+  },
+  {
+    "name": "Au Cheval",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "West Loop",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Burgers",
+      "Diner"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.8844,
+    "lng": -87.6469,
+    "address": "800 W Randolph St, Chicago, IL",
+    "blurb": "Dark, buzzy diner slinging what many call the best cheeseburger in America.",
+    "sources": {
+      "infatuation": {
+        "rating": 9
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.8
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Worth the wait for that double with egg."
+      }
+    }
+  },
+  {
+    "name": "Lula Cafe",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Logan Square",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Farm-to-Table",
+      "Seasonal"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.9256,
+    "lng": -87.7013,
+    "address": "2537 N Kedzie Blvd, Chicago, IL",
+    "blurb": "Pioneering Logan Square farm-to-table cafe beloved for brunch and its Monday farm dinners.",
+    "sources": {
+      "michelin": {
+        "award": "bib_gourmand"
+      },
+      "infatuation": {
+        "rating": 8.7
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.7,
+        "snippet": "The pasta yiayia is a must."
+      }
+    }
+  },
+  {
+    "name": "Kasama",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Ukrainian Village",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Filipino",
+      "Tasting Menu"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.9017,
+    "lng": -87.6688,
+    "address": "1001 N Winchester Ave, Chicago, IL",
+    "blurb": "Bakery by day, Michelin-starred Filipino tasting menu by night; a genuine phenomenon.",
+    "sources": {
+      "michelin": {
+        "award": "1_star"
+      },
+      "infatuation": {
+        "rating": 9.2
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9.1,
+        "snippet": "The breakfast sandwich and the dinner tasting are both incredible."
+      }
+    }
+  },
+  {
+    "name": "Lao Peng You",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Noble Square",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Chinese",
+      "Dumplings",
+      "Northern Chinese"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.9008,
+    "lng": -87.6626,
+    "address": "2020 W Chicago Ave, Chicago, IL",
+    "blurb": "Handmade dumplings and hand-pulled noodles that draw devoted lines.",
+    "sources": {
+      "michelin": {
+        "award": "bib_gourmand"
+      },
+      "infatuation": {
+        "rating": 8.6
+      },
+      "beli": {
+        "rating": 8.5
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 8.8,
+        "snippet": "Pork and chive dumplings are unreal."
+      }
+    }
+  },
+  {
+    "name": "The Publican",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Fulton Market",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Gastropub",
+      "Pork"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.8862,
+    "lng": -87.6516,
+    "address": "837 W Fulton Market, Chicago, IL",
+    "blurb": "Beer-hall-style temple to pork, oysters and farm produce in Fulton Market.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.5
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.4,
+        "snippet": "Frites and the pork rinds never disappoint."
+      }
+    }
+  },
+  {
+    "name": "Pequod's Pizza",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Lincoln Park",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Pizza",
+      "Deep Dish",
+      "Italian-American"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.9256,
+    "lng": -87.6642,
+    "address": "2207 N Clybourn Ave, Chicago, IL",
+    "blurb": "Deep-dish pan pizza famous for its caramelized cheese-crust ring.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.6
+      },
+      "beli": {
+        "rating": 8.6
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.9,
+        "snippet": "The burnt cheese crust wins the Chicago pizza debate."
+      }
+    }
+  },
+  {
+    "name": "Monteverde",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "West Loop",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Italian",
+      "Pasta"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.8748,
+    "lng": -87.6555,
+    "address": "1020 W Madison St, Chicago, IL",
+    "blurb": "Sarah Grueneberg's lively pasta-forward Italian, home of standout tortelli.",
+    "sources": {
+      "michelin": {
+        "award": "bib_gourmand"
+      },
+      "infatuation": {
+        "rating": 8.8
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.7,
+        "snippet": "Cacio whey pepe is a signature for a reason."
+      }
+    }
+  },
+  {
+    "name": "Virtue Restaurant",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Hyde Park",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Southern",
+      "American",
+      "Soul Food"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.8003,
+    "lng": -87.5901,
+    "address": "1462 E 53rd St, Chicago, IL",
+    "blurb": "Erick Williams's warm, acclaimed Southern cooking anchoring Hyde Park.",
+    "sources": {
+      "michelin": {
+        "award": "listed"
+      },
+      "infatuation": {
+        "rating": 8.7
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Shrimp and grits plus true hospitality."
+      }
+    }
+  },
+  {
+    "name": "The Peninsula Chicago",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Magnificent Mile",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "The Peninsula",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.8944,
+    "lng": -87.6247,
+    "address": "108 E Superior St, Chicago, IL",
+    "blurb": "Perennial top-of-city luxury hotel with impeccable service off the Magnificent Mile.",
+    "sources": {
+      "michelin": {
+        "award": "2_keys"
+      },
+      "conde_nast": {
+        "award": "cn_readers_choice"
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Best service in the city and a stunning spa."
+      }
+    }
+  },
+  {
+    "name": "Four Seasons Hotel Chicago",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Gold Coast",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Four Seasons",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.8988,
+    "lng": -87.625,
+    "address": "120 E Delaware Pl, Chicago, IL",
+    "blurb": "Refined Gold Coast landmark with sweeping lake views and polished service.",
+    "sources": {
+      "michelin": {
+        "award": "1_key"
+      },
+      "conde_nast": {
+        "award": "cn_gold_list"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.7,
+        "snippet": "Great location and lovely rooms after the renovation."
+      }
+    }
+  },
+  {
+    "name": "The Langham, Chicago",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "River North",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Langham",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.8882,
+    "lng": -87.6339,
+    "address": "330 N Wabash Ave, Chicago, IL",
+    "blurb": "Sleek riverside luxury in a Mies van der Rohe tower with a superb spa.",
+    "sources": {
+      "michelin": {
+        "award": "2_keys"
+      },
+      "conde_nast": {
+        "award": "cn_readers_choice"
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 8.9,
+        "snippet": "River views and the Chuan Spa are top notch."
+      }
+    }
+  },
+  {
+    "name": "Waldorf Astoria Chicago",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Gold Coast",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Waldorf Astoria",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.8993,
+    "lng": -87.6289,
+    "address": "11 E Walton St, Chicago, IL",
+    "blurb": "Parisian-inspired Gold Coast property with large suites and a quiet courtyard entrance.",
+    "sources": {
+      "conde_nast": {
+        "award": "cn_readers_choice"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Spacious rooms with fireplaces, feels residential."
+      }
+    }
+  },
+  {
+    "name": "The Robey",
+    "city": "Chicago",
+    "country": "USA",
+    "neighborhood": "Wicker Park",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 41.9096,
+    "lng": -87.6773,
+    "address": "2018 W North Ave, Chicago, IL",
+    "blurb": "Art Deco triangular tower boutique hotel with a buzzy rooftop over Wicker Park.",
+    "sources": {
+      "conde_nast": {
+        "award": "reviewed"
+      },
+      "google": {
+        "rating": 4.4
+      },
+      "reddit": {
+        "rating": 8.3,
+        "snippet": "The rooftop bar and views are the highlight."
+      }
+    }
+  },
+  {
+    "name": "Franklin Barbecue",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "East Austin",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Barbecue",
+      "Texan"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 30.2701,
+    "lng": -97.7313,
+    "address": "900 E 11th St, Austin, TX",
+    "blurb": "Aaron Franklin's legendary brisket; the line that launched Austin's barbecue fame.",
+    "sources": {
+      "infatuation": {
+        "rating": 9.3
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 9.2
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9.3,
+        "snippet": "The best brisket most people will ever eat, worth the wait."
+      }
+    }
+  },
+  {
+    "name": "la Barbecue",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "East Austin",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Barbecue",
+      "Texan"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 30.256,
+    "lng": -97.7205,
+    "address": "2401 E Cesar Chavez St, Austin, TX",
+    "blurb": "Beloved East Austin smokehouse rivaling Franklin for brisket and beef ribs.",
+    "sources": {
+      "infatuation": {
+        "rating": 9
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 9
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9.1,
+        "snippet": "Beef rib is monstrous, shorter lines than Franklin."
+      }
+    }
+  },
+  {
+    "name": "Uchi",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Lamar",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Japanese",
+      "Sushi",
+      "Fine Dining"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 30.2555,
+    "lng": -97.7684,
+    "address": "801 S Lamar Blvd, Austin, TX",
+    "blurb": "Tyson Cole's genre-defining contemporary sushi house, an Austin institution.",
+    "sources": {
+      "infatuation": {
+        "rating": 9.2
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 9.1
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Do the omakase, the hama chili is iconic."
+      }
+    }
+  },
+  {
+    "name": "Suerte",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "East Austin",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Mexican",
+      "Interior Mexican"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 30.2547,
+    "lng": -97.7139,
+    "address": "1800 E 6th St, Austin, TX",
+    "blurb": "Masa-driven interior Mexican cooking; the suadero tacos are a signature.",
+    "sources": {
+      "infatuation": {
+        "rating": 9
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.9
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.9,
+        "snippet": "Best mole and masa in the city."
+      }
+    }
+  },
+  {
+    "name": "Veracruz All Natural",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "East Austin",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Mexican",
+      "Tacos",
+      "Breakfast"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 30.2609,
+    "lng": -97.7205,
+    "address": "1704 E Cesar Chavez St, Austin, TX",
+    "blurb": "Taco trailer turned local legend famous for its migas breakfast taco.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.8
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.8
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "The migas taco is the best breakfast taco in Austin."
+      }
+    }
+  },
+  {
+    "name": "Odd Duck",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Lamar",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Farm-to-Table",
+      "Small Plates"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 30.2545,
+    "lng": -97.7682,
+    "address": "1201 S Lamar Blvd, Austin, TX",
+    "blurb": "Wood-fired, hyper-seasonal farm-to-table small plates on South Lamar.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.7
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.6
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Menu changes constantly and it's always great."
+      }
+    }
+  },
+  {
+    "name": "Loro",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Lamar",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Asian",
+      "Barbecue",
+      "Smokehouse"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 30.2497,
+    "lng": -97.7757,
+    "address": "2115 S Lamar Blvd, Austin, TX",
+    "blurb": "Aaron Franklin and Tyson Cole's Asian smokehouse mashup with frozen gin and tonics.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.6
+      },
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.5
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.5,
+        "snippet": "Smoked brisket plus Thai flavors, great patio."
+      }
+    }
+  },
+  {
+    "name": "Comedor",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "Downtown",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Mexican",
+      "Contemporary"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 30.2695,
+    "lng": -97.7466,
+    "address": "501 Colorado St, Austin, TX",
+    "blurb": "Sleek downtown modern Mexican in a light-filled atrium space.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.8
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.7
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "The mushroom taco and cocktails are outstanding."
+      }
+    }
+  },
+  {
+    "name": "Matt's El Rancho",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Lamar",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Tex-Mex",
+      "Mexican"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 30.2438,
+    "lng": -97.7822,
+    "address": "2613 S Lamar Blvd, Austin, TX",
+    "blurb": "Old-school Tex-Mex institution since 1952, home of the famed Bob Armstrong dip.",
+    "sources": {
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.2
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.3,
+        "snippet": "Classic Austin Tex-Mex, get the Bob Armstrong dip."
+      }
+    }
+  },
+  {
+    "name": "Birdie's",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "East Austin",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Pasta",
+      "Wine Bar"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 30.2637,
+    "lng": -97.7075,
+    "address": "2944 E 12th St, Austin, TX",
+    "blurb": "Counter-service fine dining with seasonal vegetables, pasta and natural wine.",
+    "sources": {
+      "infatuation": {
+        "rating": 9.1
+      },
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 9
+      },
+      "google": {
+        "rating": 4.8
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Best new restaurant in Austin, the pastas are perfect."
+      }
+    }
+  },
+  {
+    "name": "Ramen Tatsu-ya",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Lamar",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Japanese",
+      "Ramen"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 30.2432,
+    "lng": -97.7818,
+    "address": "8557 Research Blvd, Austin, TX",
+    "blurb": "Cult tonkotsu ramen shop that helped put Austin's noodle scene on the map.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.5
+      },
+      "beli": {
+        "rating": 8.5
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.7,
+        "snippet": "Rich tonkotsu broth, the Tsukemen is great too."
+      }
+    }
+  },
+  {
+    "name": "Lin Asian Bar",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "Clarksville",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Chinese",
+      "Dumplings",
+      "Dim Sum"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 30.2779,
+    "lng": -97.7623,
+    "address": "1203 W 6th St, Austin, TX",
+    "blurb": "Chef Ling Qi Wu's soup dumplings and dim sum draw perpetual crowds.",
+    "sources": {
+      "infatuation": {
+        "rating": 8.6
+      },
+      "beli": {
+        "rating": 8.6
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.7,
+        "snippet": "Soup dumplings rival anything in Texas."
+      }
+    }
+  },
+  {
+    "name": "Hotel Saint Cecilia",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Congress",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Bunkhouse",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 30.2519,
+    "lng": -97.75,
+    "address": "112 Academy Dr, Austin, TX",
+    "blurb": "Rock-and-roll luxe boutique hideaway of suites and bungalows off South Congress.",
+    "sources": {
+      "conde_nast": {
+        "award": "cn_gold_list"
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Ultimate splurge, feels like a private hideaway."
+      }
+    }
+  },
+  {
+    "name": "Hotel San José",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Congress",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Bunkhouse",
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 30.2497,
+    "lng": -97.7502,
+    "address": "1316 S Congress Ave, Austin, TX",
+    "blurb": "Minimalist converted-motel courtyard oasis in the heart of South Congress.",
+    "sources": {
+      "conde_nast": {
+        "award": "cn_readers_choice"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Chill courtyard and great location for SoCo."
+      }
+    }
+  },
+  {
+    "name": "The Driskill",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "Downtown",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Hyatt Unbound",
+    "star_rating": 4,
+    "price_level": 4,
+    "lat": 30.2685,
+    "lng": -97.7418,
+    "address": "604 Brazos St, Austin, TX",
+    "blurb": "Grand 1886 Romanesque landmark hotel on Sixth Street, dripping with Texas history.",
+    "sources": {
+      "conde_nast": {
+        "award": "reviewed"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.4,
+        "snippet": "Beautiful historic lobby and bar, central location."
+      }
+    }
+  },
+  {
+    "name": "Austin Proper Hotel",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "Downtown",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Proper",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 30.2662,
+    "lng": -97.7519,
+    "address": "600 W 2nd St, Austin, TX",
+    "blurb": "Kelly Wearstler-designed downtown tower with a rooftop pool and lake views.",
+    "sources": {
+      "conde_nast": {
+        "award": "cn_hot_list"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.5,
+        "snippet": "Gorgeous design and the rooftop is a scene."
+      }
+    }
+  },
+  {
+    "name": "South Congress Hotel",
+    "city": "Austin",
+    "country": "USA",
+    "neighborhood": "South Congress",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 30.2528,
+    "lng": -97.7495,
+    "address": "1603 S Congress Ave, Austin, TX",
+    "blurb": "Sleek modern boutique hotel with strong restaurants right on South Congress.",
+    "sources": {
+      "conde_nast": {
+        "award": "reviewed"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.4,
+        "snippet": "Great restaurants downstairs and perfect SoCo location."
+      }
+    }
+  },
+  {
+    "name": "Truth BBQ",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "The Heights",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Barbecue",
+      "Texan"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 29.7997,
+    "lng": -95.4103,
+    "address": "110 S Heights Blvd, Houston, TX",
+    "blurb": "Leonard Botello IV's brisket and towering cakes make this Houston's BBQ champ.",
+    "sources": {
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 9.1
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 9.1,
+        "snippet": "Brisket as good as anywhere, and the cakes are unreal."
+      }
+    }
+  },
+  {
+    "name": "Crawfish & Noodles",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Alief",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Vietnamese",
+      "Cajun",
+      "Viet-Cajun"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 29.7042,
+    "lng": -95.6003,
+    "address": "11360 Bellaire Blvd, Houston, TX",
+    "blurb": "Trong Nguyen's garlic-butter crawfish, the standard-bearer of Houston Viet-Cajun.",
+    "sources": {
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 9
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 9,
+        "snippet": "Viet-Cajun crawfish invented here, get them whole-shebang."
+      }
+    }
+  },
+  {
+    "name": "Xochi",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Downtown",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Mexican",
+      "Oaxacan"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 29.7524,
+    "lng": -95.3628,
+    "address": "1777 Walker St, Houston, TX",
+    "blurb": "Hugo Ortega's ode to Oaxaca, celebrated for its moles and house masa.",
+    "sources": {
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.9
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 8.9,
+        "snippet": "The mole flights and chapulines are must-orders."
+      }
+    }
+  },
+  {
+    "name": "Nancy's Hustle",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "EaDo",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Small Plates",
+      "Wine Bar"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 29.7462,
+    "lng": -95.3489,
+    "address": "2704 Polk St, Houston, TX",
+    "blurb": "Buzzy EaDo neighborhood bistro famed for its Nancy cakes and natural wine.",
+    "sources": {
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.8
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.8,
+        "snippet": "The Nancy cakes and burger are legendary."
+      }
+    }
+  },
+  {
+    "name": "Theodore Rex",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Warehouse District",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Contemporary",
+      "Vegetable-Forward"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 29.7686,
+    "lng": -95.3535,
+    "address": "1302 Nance St, Houston, TX",
+    "blurb": "Justin Yu's produce-driven small-plates gem; the tomato toast is iconic.",
+    "sources": {
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.9
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 8.9,
+        "snippet": "Tomato toast and the whole vibe are perfect."
+      }
+    }
+  },
+  {
+    "name": "Himalaya Restaurant",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Hillcroft",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Pakistani",
+      "Indian",
+      "Desi"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 29.7218,
+    "lng": -95.4913,
+    "address": "6652 Southwest Fwy, Houston, TX",
+    "blurb": "Kaiser Lashkari's Pakistani-Indian favorite, home of the hunter beef and chicken hara masala.",
+    "sources": {
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.7
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.8,
+        "snippet": "Chicken hara masala and the naan are unbeatable."
+      }
+    }
+  },
+  {
+    "name": "Pho Binh",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Midtown",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Vietnamese",
+      "Pho",
+      "Noodles"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 1,
+    "lat": 29.7175,
+    "lng": -95.3782,
+    "address": "12148 Bellaire Blvd, Houston, TX",
+    "blurb": "Cult-favorite pho joint many locals crown as the best bowl in the city.",
+    "sources": {
+      "beli": {
+        "rating": 8.6
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.7,
+        "snippet": "Broth is deep and rich, a Houston pho standard."
+      }
+    }
+  },
+  {
+    "name": "Riel",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Montrose",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Contemporary",
+      "Asian",
+      "Global"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 29.7461,
+    "lng": -95.3903,
+    "address": "1927 Fairview St, Houston, TX",
+    "blurb": "Chef Ryan Lachaine's Ukrainian-Cajun-Asian mashup reflecting Houston's diversity.",
+    "sources": {
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.6
+      },
+      "google": {
+        "rating": 4.7
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Pierogi meets Gulf seafood, super creative."
+      }
+    }
+  },
+  {
+    "name": "Nobie's",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Montrose",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "American",
+      "Gastropub",
+      "Small Plates"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 29.7398,
+    "lng": -95.3902,
+    "address": "2048 Colquitt St, Houston, TX",
+    "blurb": "Neighborhood Montrose spot with an outsized reputation for its patty melt.",
+    "sources": {
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.5
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "The patty melt is a top-five burger in town."
+      }
+    }
+  },
+  {
+    "name": "Blood Bros. BBQ",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Bellaire",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Barbecue",
+      "Asian",
+      "Texan"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 29.7059,
+    "lng": -95.4629,
+    "address": "5425 Bellaire Blvd, Bellaire, TX",
+    "blurb": "Globally-influenced smokehouse mixing Texas brisket with Asian flavors.",
+    "sources": {
+      "eater": {
+        "award": "eater_38"
+      },
+      "beli": {
+        "rating": 8.7
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.8,
+        "snippet": "Bouder and the brisket fried rice are genius."
+      }
+    }
+  },
+  {
+    "name": "Georgia James",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Montrose",
+    "entity_type": "restaurant",
+    "cuisine_tags": [
+      "Steakhouse",
+      "American"
+    ],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 29.7419,
+    "lng": -95.3907,
+    "address": "1100 Westheimer Rd, Houston, TX",
+    "blurb": "Chris Shepherd's modern steakhouse, a splurge for its wagyu and butter-poached cuts.",
+    "sources": {
+      "eater": {
+        "award": "best_of"
+      },
+      "beli": {
+        "rating": 8.6
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.5,
+        "snippet": "Great steaks and the mac and cheese is a must."
+      }
+    }
+  },
+  {
+    "name": "The Post Oak Hotel",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Uptown",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 29.7484,
+    "lng": -95.464,
+    "address": "1600 West Loop S, Houston, TX",
+    "blurb": "Houston's only Forbes Five-Star hotel, a glossy Uptown tower with Rolls-Royce house cars.",
+    "sources": {
+      "conde_nast": {
+        "award": "cn_readers_choice"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.8,
+        "snippet": "Over-the-top luxury, incredible art and service."
+      }
+    }
+  },
+  {
+    "name": "Hotel Granduca Houston",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Uptown",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 29.7398,
+    "lng": -95.4788,
+    "address": "1080 Uptown Park Blvd, Houston, TX",
+    "blurb": "Italian-villa-inspired boutique retreat with a quiet, residential Uptown feel.",
+    "sources": {
+      "conde_nast": {
+        "award": "reviewed"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.5,
+        "snippet": "Feels like a Tuscan escape in the middle of Houston."
+      }
+    }
+  },
+  {
+    "name": "The St. Regis Houston",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Uptown",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "St. Regis",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 29.7546,
+    "lng": -95.4482,
+    "address": "1919 Briar Oaks Ln, Houston, TX",
+    "blurb": "Refined River Oaks-adjacent luxury with classic St. Regis butler service.",
+    "sources": {
+      "conde_nast": {
+        "award": "reviewed"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.4,
+        "snippet": "Elegant and quiet, great afternoon tea and service."
+      }
+    }
+  },
+  {
+    "name": "Four Seasons Hotel Houston",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Downtown",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Four Seasons",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 29.755,
+    "lng": -95.3597,
+    "address": "1300 Lamar St, Houston, TX",
+    "blurb": "Downtown luxury flagship home to Bludorn's Toro Toro and a rooftop pool.",
+    "sources": {
+      "conde_nast": {
+        "award": "cn_readers_choice"
+      },
+      "google": {
+        "rating": 4.6
+      },
+      "reddit": {
+        "rating": 8.6,
+        "snippet": "Recently renovated, great pool and dining downstairs."
+      }
+    }
+  },
+  {
+    "name": "La Colombe d'Or Hotel",
+    "city": "Houston",
+    "country": "USA",
+    "neighborhood": "Montrose",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 29.7422,
+    "lng": -95.3823,
+    "address": "3410 Montrose Blvd, Houston, TX",
+    "blurb": "Intimate boutique hotel in a 1923 oil-baron mansion filled with original art.",
+    "sources": {
+      "conde_nast": {
+        "award": "reviewed"
+      },
+      "google": {
+        "rating": 4.5
+      },
+      "reddit": {
+        "rating": 8.3,
+        "snippet": "Charming historic mansion, feels one-of-a-kind."
+      }
+    }
+  }
+]

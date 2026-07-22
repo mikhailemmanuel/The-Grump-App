@@ -1,0 +1,67 @@
+name: Deploy Web App
+
+# Builds the Expo web app (offline/curated-data mode) and publishes it to
+# GitHub Pages so it can be shared as a plain URL.
+#
+# One-time setup: in the repo Settings → Pages, set "Source" to
+# "GitHub Actions". After that, every push to the deploy branch republishes.
+
+on:
+  push:
+    branches:
+      - main
+      - claude/fervent-davinci-2Ldwr
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/deploy-web.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment; cancel in-progress runs for the same ref.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build web bundle
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: mobile
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Export static web build
+        run: ./node_modules/.bin/expo export -p web
+
+      - name: Disable Jekyll (serve _expo/ underscore dirs)
+        run: touch dist/.nojekyll
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mobile/dist
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

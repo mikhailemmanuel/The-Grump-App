@@ -81,10 +81,44 @@ def strip_exif(object_key: str):
 
 @celery.task(name="app.services.photos.moderate_image")
 def moderate_image(object_key: str):
-    """Run image through moderation (OpenAI or Rekognition). Log if flagged."""
+    """Download image from S3 and run it through AWS Rekognition DetectModerationLabels.
+
+    If any label exceeds the confidence threshold, the object is deleted and the
+    task raises an exception so Celery can retry / alert.
+    """
     logger = logging.getLogger(__name__)
+    CONFIDENCE_THRESHOLD = 75.0  # percent
+
     try:
-        # Placeholder — integrate OpenAI moderation or AWS Rekognition
-        logger.info("Moderation check for %s — PASSED (placeholder)", object_key)
+        s3 = boto3.client(
+            "s3",
+            region_name=settings.aws_region,
+            aws_access_key_id=settings.aws_access_key_id,
+            aws_secret_access_key=settings.aws_secret_access_key,
+        )
+        rekognition = boto3.client(
+            "rekognition",
+            region_name=settings.aws_region,
+            aws_access_key_id=settings.aws_access_key_id,
+            aws_secret_access_key=settings.aws_secret_access_key,
+        )
+
+        response = rekognition.detect_moderation_labels(
+            Image={"S3Object": {"Bucket": settings.aws_s3_bucket, "Name": object_key}},
+            MinConfidence=CONFIDENCE_THRESHOLD,
+        )
+
+        flagged = response.get("ModerationLabels", [])
+        if flagged:
+            label_names = [lbl["Name"] for lbl in flagged]
+            logger.warning(
+                "Moderation: deleting %s — flagged labels: %s", object_key, label_names
+            )
+            s3.delete_object(Bucket=settings.aws_s3_bucket, Key=object_key)
+            raise ValueError(f"Image {object_key} failed moderation: {label_names}")
+
+        logger.info("Moderation: %s passed", object_key)
+    except ValueError:
+        raise
     except Exception:
-        logger.exception("Moderation failed for %s", object_key)
+        logger.exception("Moderation check failed for %s", object_key)

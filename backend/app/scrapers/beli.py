@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import logging
 import time
-from datetime import datetime, timezone
 
 import httpx
 
@@ -90,7 +89,6 @@ class BeliScraper(BaseScraper):
         """Fetch paginated restaurant data, handling session expiry."""
         count = 0
         page = 1
-        retries = 0
 
         while True:
             resp = self._request_with_retry("GET", url, params={"page": page, "limit": 50})

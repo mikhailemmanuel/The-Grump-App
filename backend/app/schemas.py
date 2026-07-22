@@ -9,10 +9,7 @@ from typing import Any, Literal
 from pydantic import BaseModel, EmailStr, Field, field_validator
 
 from app.validation import (
-    MAX_COMMENT_LENGTH,
-    MAX_LIST_DESCRIPTION_LENGTH,
     MAX_PHOTO_CAPTION_LENGTH,
-    MAX_SEARCH_QUERY_LENGTH,
     validate_password_strength,
 )
 
@@ -92,6 +89,11 @@ class ReviewCreate(BaseModel):
     verdict: Literal["go_back", "iffy", "would_not_go_back"]
     comment: str | None = Field(None, max_length=2000)
     visited_at: date | None = None
+
+
+class PhotoAttach(BaseModel):
+    object_key: str
+    caption: str | None = Field(None, max_length=MAX_PHOTO_CAPTION_LENGTH)
 
 
 class ReviewOut(BaseModel):

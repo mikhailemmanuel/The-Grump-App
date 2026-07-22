@@ -16,7 +16,9 @@ router = APIRouter(tags=["cities"])
 
 @router.get("/cities", response_model=list[str])
 async def list_cities(db: AsyncSession = Depends(get_db)):
-    result = await db.execute(select(distinct(Venue.city)).order_by(Venue.city))
+    result = await db.execute(
+        select(distinct(func.lower(Venue.city))).order_by(func.lower(Venue.city))
+    )
     return result.scalars().all()
 
 

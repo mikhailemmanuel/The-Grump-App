@@ -1,0 +1,731 @@
+[
+  {
+    "name": "The Ledbury",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Notting Hill",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern British", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 51.5169,
+    "lng": -0.2013,
+    "address": "127 Ledbury Rd, London W11 2AQ",
+    "blurb": "Brett Graham's Notting Hill three-star, a benchmark for refined modern British cooking.",
+    "sources": {
+      "michelin": { "award": "3_stars" },
+      "infatuation": { "rating": 9.3 },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.2, "snippet": "Consistently one of the best meals in London." }
+    }
+  },
+  {
+    "name": "Core by Clare Smyth",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Notting Hill",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern British", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 51.5145,
+    "lng": -0.2003,
+    "address": "92 Kensington Park Rd, London W11 2PN",
+    "blurb": "Clare Smyth's three-star elevates British produce with dishes like the famous potato and roe.",
+    "sources": {
+      "michelin": { "award": "3_stars" },
+      "infatuation": { "rating": 9.1 },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.0, "snippet": "The potato dish alone is worth the trip." }
+    }
+  },
+  {
+    "name": "Kiln",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Soho",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Thai", "Southeast Asian"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 51.5116,
+    "lng": -0.1364,
+    "address": "58 Brewer St, London W1F 9TL",
+    "blurb": "Fiery clay-pot and grill Thai cooking at a buzzy Soho counter; a Bib Gourmand favourite.",
+    "sources": {
+      "michelin": { "award": "bib_gourmand" },
+      "infatuation": { "rating": 8.8 },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.9, "snippet": "Best value big-flavour meal in Soho." }
+    }
+  },
+  {
+    "name": "St. JOHN",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Smithfield",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["British", "Nose-to-Tail"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.5205,
+    "lng": -0.1015,
+    "address": "26 St John St, London EC1M 4AY",
+    "blurb": "Fergus Henderson's nose-to-tail institution; birthplace of modern British nose-to-tail cooking.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "infatuation": { "rating": 9.0 },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 9.1, "snippet": "The bone marrow and Eccles cake are essential." }
+    }
+  },
+  {
+    "name": "Brat",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Shoreditch",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Basque", "Grill", "Seafood"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.5241,
+    "lng": -0.0757,
+    "address": "4 Redchurch St, London E1 6JL",
+    "blurb": "Tomos Parry's wood-fired Basque grill; the whole roasted turbot is legendary.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "infatuation": { "rating": 9.0 },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 9.0, "snippet": "That turbot changed how I think about fish." }
+    }
+  },
+  {
+    "name": "The Harwood Arms",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Fulham",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["British", "Gastropub", "Game"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.4795,
+    "lng": -0.1985,
+    "address": "Walham Grove, London SW6 1QP",
+    "blurb": "London's only Michelin-starred pub, famed for its venison Scotch egg and seasonal game.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "infatuation": { "rating": 8.7 },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "The Scotch egg is a rite of passage." }
+    }
+  },
+  {
+    "name": "Dishoom",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Covent Garden",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Indian", "Bombay Cafe"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 51.5124,
+    "lng": -0.1265,
+    "address": "12 Upper St Martin's Ln, London WC2H 9FB",
+    "blurb": "Bombay-cafe homage with legendary black daal and bacon naan; perennial queues.",
+    "sources": {
+      "infatuation": { "rating": 8.6 },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.7, "snippet": "The black daal is worth the wait every time." }
+    }
+  },
+  {
+    "name": "Barrafina",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Soho",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Spanish", "Tapas", "Seafood"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.5138,
+    "lng": -0.1315,
+    "address": "26-27 Dean St, London W1D 3LL",
+    "blurb": "No-reservations Spanish counter serving pristine tapas and seafood off the plancha.",
+    "sources": {
+      "michelin": { "award": "bib_gourmand" },
+      "infatuation": { "rating": 8.7 },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.6, "snippet": "Sit at the bar and watch the magic happen." }
+    }
+  },
+  {
+    "name": "Sabor",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Mayfair",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Spanish", "Tapas"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.5106,
+    "lng": -0.1409,
+    "address": "35-37 Heddon St, London W1B 4BR",
+    "blurb": "Nieves Barragan's ode to Spain, from Galician counter snacks to a wood-fired Segovian suckling pig.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "infatuation": { "rating": 8.8 },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "The suckling pig upstairs is unforgettable." }
+    }
+  },
+  {
+    "name": "Lyle's",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Shoreditch",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern British", "Seasonal"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.5243,
+    "lng": -0.0779,
+    "address": "Tea Building, 56 Shoreditch High St, London E1 6JJ",
+    "blurb": "James Lowe's pared-back seasonal British cooking in a bright Shoreditch room.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "infatuation": { "rating": 8.6 },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.5, "snippet": "Ingredient-led and quietly brilliant." }
+    }
+  },
+  {
+    "name": "Gymkhana",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Mayfair",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Indian", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 51.5091,
+    "lng": -0.1421,
+    "address": "42 Albemarle St, London W1S 4JH",
+    "blurb": "Raj-era club setting for some of London's finest Indian cooking, now two Michelin stars.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "infatuation": { "rating": 9.0 },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 9.0, "snippet": "The wild muntjac biryani is spectacular." }
+    }
+  },
+  {
+    "name": "Padella",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Borough",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Italian", "Pasta"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 51.5054,
+    "lng": -0.0906,
+    "address": "6 Southwark St, London SE1 1TQ",
+    "blurb": "Hand-rolled pasta bar by Borough Market; the pici cacio e pepe is a cult dish.",
+    "sources": {
+      "infatuation": { "rating": 8.6 },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "Cheap, fast, and some of the best pasta in the city." }
+    }
+  },
+  {
+    "name": "The Connaught",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Mayfair",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Maybourne",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 51.5099,
+    "lng": -0.1487,
+    "address": "Carlos Pl, London W1K 2AL",
+    "blurb": "Quintessential Mayfair grande dame with a legendary bar and Helene Darroze's dining room.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "michelin": { "award": "3_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.1, "snippet": "The Connaught Bar is worth a stay on its own." }
+    }
+  },
+  {
+    "name": "Claridge's",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Mayfair",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Maybourne",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 51.5127,
+    "lng": -0.1479,
+    "address": "Brook St, London W1K 4HR",
+    "blurb": "Art Deco icon synonymous with London glamour, afternoon tea, and impeccable service.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "michelin": { "award": "3_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 9.0, "snippet": "The most magical hotel in London at Christmas." }
+    }
+  },
+  {
+    "name": "The Savoy",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Covent Garden",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Fairmont",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 51.5101,
+    "lng": -0.1195,
+    "address": "Strand, London WC2R 0EZ",
+    "blurb": "Storied Thames-side landmark with the American Bar and river-view suites.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "The American Bar is a bucket-list cocktail spot." }
+    }
+  },
+  {
+    "name": "The Ned",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "City of London",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Soho House",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 51.5137,
+    "lng": -0.0886,
+    "address": "27 Poultry, London EC2R 8AJ",
+    "blurb": "Grand former bank turned buzzy hotel with nine restaurants and a rooftop pool.",
+    "sources": {
+      "conde_nast": { "award": "cn_hot_list" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.6, "snippet": "The old banking hall is stunning for dinner and drinks." }
+    }
+  },
+  {
+    "name": "The Zetter Townhouse Marylebone",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Marylebone",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 51.5187,
+    "lng": -0.1533,
+    "address": "28-30 Seymour St, London W1H 7JB",
+    "blurb": "Quirky, eccentric boutique townhouse with a cosseting cocktail lounge off a leafy square.",
+    "sources": {
+      "conde_nast": { "award": "reviewed" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.5, "snippet": "Charming, whimsical and central without the stuffiness." }
+    }
+  },
+  {
+    "name": "The Beaumont",
+    "city": "London",
+    "country": "UK",
+    "neighborhood": "Mayfair",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 51.5109,
+    "lng": -0.1519,
+    "address": "8 Balderton St, Brown Hart Gardens, London W1K 6TF",
+    "blurb": "Art Deco-inspired Mayfair boutique hotel with the clubby Colony Grill Room.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.8, "snippet": "Feels like stepping into a 1920s film set." }
+    }
+  },
+  {
+    "name": "Mikla",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Beyoglu",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern Turkish", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.0289,
+    "lng": 28.9744,
+    "address": "The Marmara Pera, Mesrutiyet Cd. 15, 34430 Beyoglu",
+    "blurb": "Mehmet Gurs's rooftop landmark fusing Anatolian and Scandinavian sensibilities with skyline views.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.9, "snippet": "The view and the lamb are both unforgettable." }
+    }
+  },
+  {
+    "name": "Neolokal",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Karakoy",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern Anatolian", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.0255,
+    "lng": 28.9741,
+    "address": "SALT Galata, Bankalar Cd. 11, 34420 Karakoy",
+    "blurb": "Chef Maksut Askar reimagines Anatolian heritage recipes with Bosphorus views from SALT Galata.",
+    "sources": {
+      "michelin": { "award": "1_star" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.8, "snippet": "Thoughtful, sustainable and deeply Turkish." }
+    }
+  },
+  {
+    "name": "TURK Fatih Tutak",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Sisli",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Modern Turkish", "Fine Dining"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.0553,
+    "lng": 28.9869,
+    "address": "Mesrutiyet Mah., Bombonti, Sisli",
+    "blurb": "Fatih Tutak's tasting-menu flagship, Istanbul's most decorated restaurant with two Michelin stars.",
+    "sources": {
+      "michelin": { "award": "2_stars" },
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.9, "snippet": "Ambitious tasting menu, the pinnacle of Turkish fine dining." }
+    }
+  },
+  {
+    "name": "Ciya Sofrasi",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Kadikoy",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Anatolian", "Home Cooking"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 40.9903,
+    "lng": 29.0275,
+    "address": "Caferaga, Guneslibahce Sk. No:43, 34710 Kadikoy",
+    "blurb": "Musa Dagdeviren's beloved canteen preserving forgotten Anatolian regional dishes.",
+    "sources": {
+      "michelin": { "award": "listed" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 9.0, "snippet": "A living museum of Turkish home cooking, and cheap too." }
+    }
+  },
+  {
+    "name": "Karakoy Lokantasi",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Karakoy",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Turkish", "Meze", "Seafood"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.0243,
+    "lng": 28.9772,
+    "address": "Kemankes Karamustafa Pasa, Kemankes Cd. No:37A, 34425 Karakoy",
+    "blurb": "Handsome tiled meyhane serving classic meze and seafood; a Karakoy institution.",
+    "sources": {
+      "michelin": { "award": "listed" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.7, "snippet": "Gorgeous room and reliably excellent meze." }
+    }
+  },
+  {
+    "name": "Hamdi Restaurant",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Eminonu",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Turkish", "Kebab", "Southeastern"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.0169,
+    "lng": 28.9705,
+    "address": "Rustempasa, Kalcin Sk. No:11, 34116 Eminonu",
+    "blurb": "Famed Urfa-style kebab house with Golden Horn views over the Spice Bazaar.",
+    "sources": {
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.5, "snippet": "The pistachio kebab and the view make it a classic." }
+    }
+  },
+  {
+    "name": "Zubeyir Ocakbasi",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Beyoglu",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Turkish", "Ocakbasi", "Grill"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.0367,
+    "lng": 28.9847,
+    "address": "Kocatepe, Bekar Sk. No:28, 34437 Beyoglu",
+    "blurb": "Smoky charcoal-grill ocakbasi where you watch skewers cooked over open flame.",
+    "sources": {
+      "michelin": { "award": "listed" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.8, "snippet": "Best kebabs in Beyoglu, grilled right in front of you." }
+    }
+  },
+  {
+    "name": "Balikci Sabahattin",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Sultanahmet",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Turkish", "Seafood", "Meze"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.0057,
+    "lng": 28.9782,
+    "address": "Cankurtaran, Seyit Hasan Sk. No:1, 34122 Fatih",
+    "blurb": "Long-running fish restaurant in a historic house serving classic Istanbul seafood meze.",
+    "sources": {
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.5, "snippet": "Old-school seafood done properly near the old city." }
+    }
+  },
+  {
+    "name": "Asitane",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Edirnekapi",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Ottoman", "Turkish"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 3,
+    "lat": 41.0316,
+    "lng": 28.9394,
+    "address": "Kariye, Kariye Cami Sk. No:6, 34087 Edirnekapi",
+    "blurb": "Reviver of imperial Ottoman palace cuisine beside the Chora Church.",
+    "sources": {
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.4, "snippet": "Fascinating historic Ottoman dishes you can't find elsewhere." }
+    }
+  },
+  {
+    "name": "Dai Pera",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Beyoglu",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Turkish", "Home Cooking"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.0322,
+    "lng": 28.9749,
+    "address": "Sahkulu, Bogazkesen Cd. No:70, 34425 Beyoglu",
+    "blurb": "Cozy family kitchen turning out heartfelt Turkish home cooking and slow-cooked stews.",
+    "sources": {
+      "google": { "rating": 4.6 },
+      "reddit": { "rating": 8.6, "snippet": "Feels like eating at a Turkish grandmother's table." }
+    }
+  },
+  {
+    "name": "Van Kahvalti Evi",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Cihangir",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Turkish", "Breakfast"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 2,
+    "lat": 41.0316,
+    "lng": 28.9835,
+    "address": "Akarsu Yks. Sk. No:23, 34433 Cihangir",
+    "blurb": "Sprawling Eastern Turkish breakfast spread of cheeses, honeycomb and herbed eggs.",
+    "sources": {
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.7, "snippet": "The ultimate Turkish breakfast, come hungry." }
+    }
+  },
+  {
+    "name": "Nusr-Et Steakhouse Etiler",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Etiler",
+    "entity_type": "restaurant",
+    "cuisine_tags": ["Steakhouse", "Turkish"],
+    "hotel_brand": null,
+    "star_rating": null,
+    "price_level": 4,
+    "lat": 41.0812,
+    "lng": 29.0336,
+    "address": "Etiler, Nispetiye Cd. No:87, 34337 Besiktas",
+    "blurb": "The original Salt Bae steakhouse, a showy Etiler destination for meat theatrics.",
+    "sources": {
+      "google": { "rating": 4.4 },
+      "reddit": { "rating": 8.0, "snippet": "Touristy and pricey but the meat is genuinely good." }
+    }
+  },
+  {
+    "name": "Ciragan Palace Kempinski",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Besiktas",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Kempinski",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.0431,
+    "lng": 29.0136,
+    "address": "Ciragan Cd. No:32, 34349 Besiktas",
+    "blurb": "Restored Ottoman palace on the Bosphorus with an infinity pool over the water.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.9, "snippet": "Staying in an actual sultan's palace on the Bosphorus." }
+    }
+  },
+  {
+    "name": "Four Seasons Hotel Istanbul at Sultanahmet",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Sultanahmet",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Four Seasons",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.0080,
+    "lng": 28.9793,
+    "address": "Cankurtaran, Tevkifhane Sk. No:1, 34122 Fatih",
+    "blurb": "A former neoclassical prison turned intimate luxury hotel steps from Hagia Sophia.",
+    "sources": {
+      "conde_nast": { "award": "cn_readers_choice" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.8, "snippet": "Unbeatable location right by the Blue Mosque." }
+    }
+  },
+  {
+    "name": "The Peninsula Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Karakoy",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Peninsula",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.0231,
+    "lng": 28.9797,
+    "address": "Kemankes Karamustafa Pasa, Kemankes Cd. No:34, 34425 Karakoy",
+    "blurb": "Waterfront newcomer in the Galataport complex with sweeping Bosphorus views.",
+    "sources": {
+      "conde_nast": { "award": "cn_hot_list" },
+      "michelin": { "award": "2_keys" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.9, "snippet": "The most polished new luxury hotel in the city." }
+    }
+  },
+  {
+    "name": "Six Senses Kocatas Mansions",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Sariyer",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Six Senses",
+    "star_rating": 5,
+    "price_level": 4,
+    "lat": 41.1067,
+    "lng": 29.0570,
+    "address": "Kirecburnu, Kocatas Mah., Sariyer",
+    "blurb": "Pair of restored 19th-century Bosphorus mansions with a serene spa and waterside pool.",
+    "sources": {
+      "conde_nast": { "award": "cn_gold_list" },
+      "google": { "rating": 4.7 },
+      "reddit": { "rating": 8.8, "snippet": "Tranquil escape from the city buzz right on the water." }
+    }
+  },
+  {
+    "name": "Soho House Istanbul",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Beyoglu",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": "Soho House",
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 41.0322,
+    "lng": 28.9772,
+    "address": "Evliya Celebi, Mesrutiyet Cd. No:56, 34430 Beyoglu",
+    "blurb": "Stylish members' club and hotel in the historic Palazzo Corpi with a rooftop pool.",
+    "sources": {
+      "conde_nast": { "award": "cn_hot_list" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.5, "snippet": "Beautiful historic building and a great rooftop scene." }
+    }
+  },
+  {
+    "name": "Vault Karakoy, The House Hotel",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "neighborhood": "Karakoy",
+    "entity_type": "hotel",
+    "cuisine_tags": null,
+    "hotel_brand": null,
+    "star_rating": 4,
+    "price_level": 3,
+    "lat": 41.0233,
+    "lng": 28.9743,
+    "address": "Bereketzade, Bankalar Cd. No:5, 34421 Karakoy",
+    "blurb": "A 19th-century bank transformed into a design hotel, vaults and marble intact.",
+    "sources": {
+      "conde_nast": { "award": "reviewed" },
+      "google": { "rating": 4.5 },
+      "reddit": { "rating": 8.4, "snippet": "The old bank details make it a stunning boutique stay." }
+    }
+  }
+]

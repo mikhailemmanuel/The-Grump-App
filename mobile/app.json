@@ -13,6 +13,11 @@
       "backgroundColor": "#FAFAFA"
     },
     "assetBundlePatterns": ["**/*"],
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/icon.png"
+    },
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.foodgrump.app"
@@ -26,7 +31,8 @@
     },
     "plugins": ["expo-router"],
     "experiments": {
-      "typedRoutes": true
+      "typedRoutes": true,
+      "baseUrl": "/the-grump-app"
     }
   }
 }
